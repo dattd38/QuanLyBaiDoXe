@@ -1,0 +1,2 @@
+#soNgay,ThanhTien
+1,50000
