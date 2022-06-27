@@ -159,8 +159,10 @@ public class TrangChuGUI {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				pnMain.removeAll();
-				QLTrangChuGUI qlTrangChu=QLTrangChuGUI.getInstance();
-				pnMain.add(qlTrangChu.getPnTongQuanQLTrangChu());
+//				QLTrangChuGUI qlTrangChu=QLTrangChuGUI.getInstance();
+				pnMain.add(lblTenBaiXe);
+                                pnMain.add(pnLich);
+                                pnMain.add(lblTruong);
 				pnMain.revalidate();
 				pnMain.repaint();
 			}

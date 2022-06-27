@@ -49,9 +49,12 @@ public class DangNhapBLL {
 					}
                                         else if(nv.getLoaiTaiKhoan().equals("2")) {
 						QuanTriHeThongGUI.getInstance().getFrmMain().setVisible(true);
+                                                ThongTinCaNhanBLL.getInstance().setNhanVien(nv);
 					}
                                         else if(nv.getLoaiTaiKhoan().equals("3")) {
 						QuanTriHeThongGUI.getInstance().getFrmMain().setVisible(true);
+                                                ThongTinCaNhanBLL.getInstance().setNhanVien(nv);
+                                               
                                         }
                                                 
 					return true;
