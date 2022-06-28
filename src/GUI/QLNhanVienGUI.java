@@ -109,20 +109,20 @@ public class QLNhanVienGUI {
 		jFNhanVien.getContentPane().setLayout(null);
 		  
 		pnTongQuanQLNhanVien = new JPanel();
-		pnTongQuanQLNhanVien.setBackground(SystemColor.activeCaption);
+		pnTongQuanQLNhanVien.setBackground(new Color(237,223,179));
 		pnTongQuanQLNhanVien.setBounds(0, 0, 1065, 560);
 		pnTongQuanQLNhanVien.setLayout(null);
                 jFNhanVien.getContentPane().add(pnTongQuanQLNhanVien);
                 
 		JPanel pnTieuDeQLNhanVien = new JPanel();
-		pnTieuDeQLNhanVien.setBackground(SystemColor.activeCaption);
+		pnTieuDeQLNhanVien.setBackground(new Color(237,223,179));
 		pnTieuDeQLNhanVien.setBounds(0, 0, 1065, 71);
 		pnTongQuanQLNhanVien.add(pnTieuDeQLNhanVien);
 		pnTieuDeQLNhanVien.setLayout(null);
                 
 		
 		JLabel lblQLNhanVien = new JLabel("QUẢN LÝ NHÂN VIÊN");
-		lblQLNhanVien.setForeground(Color.RED);
+		lblQLNhanVien.setForeground(new Color(161,0,53));
 		lblQLNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblQLNhanVien.setBounds(394, 20, 291, 31);
 		pnTieuDeQLNhanVien.add(lblQLNhanVien);
@@ -156,13 +156,14 @@ public class QLNhanVienGUI {
 		pnQLNhanVien.add(sc,BorderLayout.CENTER);
 		
 		JPanel pnThongTinNhanVien = new JPanel();
-		pnThongTinNhanVien.setBackground(SystemColor.activeCaption);
+		pnThongTinNhanVien.setBackground(new Color(237,223,179));
 		pnThongTinNhanVien.setBounds(0, 225, 1065, 560-225);
 		pnTongQuanQLNhanVien.add(pnThongTinNhanVien);
 		pnThongTinNhanVien.setLayout(null);
 		
 		JLabel lblThongTinNhanVien = new JLabel("THÔNG TIN NHÂN VIÊN");
 		lblThongTinNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 17));
+                lblThongTinNhanVien.setForeground(new Color(161,0,53));
 		lblThongTinNhanVien.setBounds(10, 5, 208, 22);
 		pnThongTinNhanVien.add(lblThongTinNhanVien);
 		
@@ -173,28 +174,32 @@ public class QLNhanVienGUI {
 		pnThongTinNhap.setLayout(null);
 		
 		lblMessage = new JLabel("(*) Không được bỏ trống");
-		lblMessage.setForeground(Color.RED);
+		lblMessage.setForeground(new Color(161,0,53));
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 14));
 		lblMessage.setBounds(125, 20, 654, 34);
 		pnThongTinNhanVien.add(lblMessage);
 		
 		JLabel lblTenNhanVien = new JLabel("Tên nhân viên:*");
 		lblTenNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblTenNhanVien.setForeground(new Color(161,0,53));
 		lblTenNhanVien.setBounds(24, 25, 91, 30);
 		pnThongTinNhap.add(lblTenNhanVien);
 		
 		tfTenNhanVien = new JTextField();
 		tfTenNhanVien.setBounds(125, 25, 258, 31);
+                tfTenNhanVien.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(tfTenNhanVien);
 		tfTenNhanVien.setColumns(10);
 		
 		JLabel lblLoaiTaiKhoan = new JLabel("Loại tài khoản:*");
 		lblLoaiTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblLoaiTaiKhoan.setForeground(new Color(161,0,53));
 		lblLoaiTaiKhoan.setBounds(420, 25, 91, 30);
 		pnThongTinNhap.add(lblLoaiTaiKhoan);
 		
 		cbbLoaiTaiKhoan = new JComboBox<String>();
 		cbbLoaiTaiKhoan.setBounds(521,  25, 258, 31);
+                cbbLoaiTaiKhoan.setForeground(new Color(161,0,53));
 		cbbLoaiTaiKhoan.addItem("1");
                 cbbLoaiTaiKhoan.addItem("2");
 		cbbLoaiTaiKhoan.addItem("3");
@@ -203,36 +208,43 @@ public class QLNhanVienGUI {
 		
 		JLabel lblTaiKhoan = new JLabel("Tên tài khoản:*");
 		lblTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblTaiKhoan.setForeground(new Color(161,0,53));
 		lblTaiKhoan.setBounds(24, 75, 91, 30);
 		pnThongTinNhap.add(lblTaiKhoan);
 		
 		tfTenTaiKhoan = new JTextField();
 		tfTenTaiKhoan.setBounds(125, 75, 258, 31);
+                tfTenTaiKhoan.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(tfTenTaiKhoan);
 		tfTenTaiKhoan.setColumns(10);
 		
 		JLabel lblMatKhau = new JLabel("Mật khẩu:*");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblMatKhau.setForeground(new Color(161,0,53));
 		lblMatKhau.setBounds(420, 75, 91, 30);
 		pnThongTinNhap.add(lblMatKhau);
                 
                 pfPass = new JPasswordField();
 		pfPass.setBounds(521, 75, 152, 30);
+                pfPass.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(pfPass);
 		
 		JLabel lblSoDienThoai = new JLabel("Số điện thoại:");
 		lblSoDienThoai.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblSoDienThoai.setForeground(new Color(161,0,53));
 		lblSoDienThoai.setBounds(24, 130, 91, 30);
 		pnThongTinNhap.add(lblSoDienThoai);
 		
 		tfSoDienThoai = new JTextField();
 		tfSoDienThoai.setColumns(10);
 		tfSoDienThoai.setBounds(125, 130, 258, 31);
+                tfSoDienThoai.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(tfSoDienThoai);
                 
            JButton btnBack = new JButton(new ImageIcon("icon//logout.png"));
                 btnBack.setBounds(900, 30, 120, 40);
                 btnBack.setText("Back");
+                btnBack.setForeground(new Color(161,0,53));
                 btnBack.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		pnTieuDeQLNhanVien.add(btnBack);
                 btnBack.addActionListener(new ActionListener() {
@@ -251,42 +263,50 @@ public class QLNhanVienGUI {
 		tfMaNhanVien = new JTextField();
 		tfMaNhanVien.setColumns(10);
 		tfMaNhanVien.setBounds(521, 130, 0, 0);
+                tfMaNhanVien.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(tfMaNhanVien);
                 
                 JLabel lblGioiTinh = new JLabel("Giới tính:"); 
 		lblGioiTinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblGioiTinh.setForeground(new Color(161,0,53));
 		lblGioiTinh.setBounds(420, 130, 91, 30);
 		pnThongTinNhap.add(lblGioiTinh);
 		
 		cbbGioiTinh = new JComboBox<String>();
 		cbbGioiTinh.setBounds(521, 130, 258, 31);
+                cbbGioiTinh.setForeground(new Color(161,0,53));
 		cbbGioiTinh.addItem("Nam");
                 cbbGioiTinh.addItem("Nữ");
 		pnThongTinNhap.add(cbbGioiTinh);
                 
                 JLabel lblNgaySinh = new JLabel("Ngày Sinh:");
 		lblNgaySinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblNgaySinh.setForeground(new Color(161,0,53));
 		lblNgaySinh.setBounds(24, 185, 91, 30);
 		pnThongTinNhap.add(lblNgaySinh);
 		
 		dcNgaySinh = new JDateChooser();
 		dcNgaySinh.setBounds(125, 185, 258, 30);
+                dcNgaySinh.setForeground(new Color(161,0,53));
                 dcNgaySinh.setDateFormatString("yyyy-MM-dd");
 		pnThongTinNhap.add(dcNgaySinh);
                 
                 JLabel lblDiaChi = new JLabel("Địa Chỉ:");
 		lblDiaChi.setFont(new Font("Times New Roman", Font.BOLD, 13));
+                lblDiaChi.setForeground(new Color(161,0,53));
 		lblDiaChi.setBounds(24, 240, 91, 30);
 		pnThongTinNhap.add(lblDiaChi);
 		
 		tfDiaChi = new JTextField();
 		tfDiaChi.setColumns(10);
 		tfDiaChi.setBounds(125, 240, 258, 31);
+                tfDiaChi.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(tfDiaChi);
 		
 		
 		JButton btnShowPass = new JButton("Hiển thị");
 		btnShowPass.setBounds(683, 75, 97, 30);
+                btnShowPass.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(btnShowPass);
 		btnShowPass.addActionListener(new ActionListener() {
 			
@@ -307,6 +327,7 @@ public class QLNhanVienGUI {
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThem.setBounds(896, 48, 138, 41);
+                btnThem.setForeground(new Color(161,0,53));
 		btnThem.addActionListener(new ActionListener() {
 			
 			@Override
@@ -341,6 +362,7 @@ public class QLNhanVienGUI {
 		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
 		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnSua.setBounds(896, 125, 138, 41);
+                btnSua.setForeground(new Color(161,0,53));
 		btnSua.addActionListener(new ActionListener() {
 			
 			@Override
@@ -370,6 +392,7 @@ public class QLNhanVienGUI {
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(896, 200, 138, 41);
+                btnHuy.setForeground(new Color(161,0,53));
 		btnHuy.addActionListener(new ActionListener() {
 			
 			@Override
@@ -384,6 +407,7 @@ public class QLNhanVienGUI {
 		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
 		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnXoa.setBounds(896, 275, 138, 41);
+                btnXoa.setForeground(new Color(161,0,53));
 		btnXoa.addActionListener(new ActionListener() {
 			
 			@Override

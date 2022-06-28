@@ -26,6 +26,8 @@ import Controller.VeDAL;
 import GUI.*;
 import DTO.*;
 import java.text.DateFormat;
+import java.util.Random;
+import org.apache.poi.ss.formula.functions.Column;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 
 
@@ -139,17 +141,24 @@ public class BaoCaoBLL {
 		XWPFParagraph p1 = document.createParagraph();
 		p1.setAlignment(ParagraphAlignment.LEFT);
 		XWPFRun run = p1.createRun();
-		run.setFontSize(14);
+		run.setFontSize(12);
 		run.setBold(true);
-		run.setText("TỔNG CÔNG TY SIMPLIFY         CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM");
+		run.setText("TỔNG CÔNG TY LEGON-CAR         CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM");
 		
 		XWPFParagraph p6=document.createParagraph();
 		p6.setAlignment(ParagraphAlignment.LEFT);
 		run=p6.createRun();
-		run.setFontSize(12);
+		run.setFontSize(10);
 		run.setBold(true);
-		run.setText("               BÃI XE LUXURY"+ "                                        "   +     " Độc lập - Tự do - Hạnh phúc  ");
+		run.setText("               BÃI XE TOÀN ĐẠT"+ "                                        "   +     " Độc lập - Tự do - Hạnh phúc  ");
 		
+                XWPFParagraph pkt=document.createParagraph();
+		pkt.setAlignment(ParagraphAlignment.LEFT);
+		run=pkt.createRun();
+		run.setFontSize(10);
+		run.setBold(true);
+		run.setText("");
+                
 		XWPFParagraph p5=document.createParagraph();
 		p5.setAlignment(ParagraphAlignment.CENTER);
 		run=p5.createRun();
@@ -167,7 +176,7 @@ public class BaoCaoBLL {
 		XWPFParagraph p3 = document.createParagraph();
 		p3.setAlignment(ParagraphAlignment.RIGHT);
 		run = p3.createRun();
-		run.setFontSize(14);
+		run.setFontSize(12);
 		SimpleDateFormat sdfNgay = new SimpleDateFormat("dd");
 		SimpleDateFormat sdfThang = new SimpleDateFormat("MM");
 		SimpleDateFormat sdfNam = new SimpleDateFormat("YYYY");
@@ -175,7 +184,7 @@ public class BaoCaoBLL {
 		run.setText("Ngày "+ sdfNgay.format(now) + " tháng "+ sdfThang.format(now) + " năm "+ sdfNam.format(now));
 		
 		XWPFParagraph p4 = document.createParagraph();
-//		run = p4.createRun();
+		run = p4.createRun();
 		p4.setAlignment(ParagraphAlignment.CENTER);
 		XWPFTable tb = document.createTable();
 		XWPFTableRow row = tb.getRow(0);
@@ -185,7 +194,8 @@ public class BaoCaoBLL {
 		row.addNewTableCell().setText("Số Xe Ra");
 		row.addNewTableCell().setText("Tổng Số Tiền");
 		//tb.setWidth(600);
-		tb.setCellMargins(200, 100, 100, 1500);
+                
+		tb.setCellMargins(200, 50, 100, 1200);
 		for (int i = 0; i< dataRow.size(); i++) {
 			Object[] iRow = dataRow.get(i);
 			XWPFTableRow tableRow = tb.createRow();
@@ -193,20 +203,58 @@ public class BaoCaoBLL {
 			tableRow.getCell(0).setText(iRow[0].toString());
 			tableRow.getCell(1).setText(iRow[1].toString());
 			tableRow.getCell(2).setText(iRow[2].toString());
-                        tableRow.getCell(3).setText(iRow[3].toString());
+                        tableRow.getCell(3).setText(iRow[3].toString());  
 		}
-		
+                XWPFParagraph pkt1=document.createParagraph();
+		pkt1.setAlignment(ParagraphAlignment.LEFT);
+		run=pkt1.createRun();
+		run.setFontSize(10);
+		run.setBold(true);
+		run.setText("");
+                
+                XWPFParagraph pstxv=document.createParagraph();
+		pstxv.setAlignment(ParagraphAlignment.LEFT);
+		run=pstxv.createRun();
+		run.setFontSize(10);
+		run.setBold(true);
+		run.setText("                                           Tổng xe vào :"+String.valueOf(DoanhThuGUI.getInstance().sumIntTXV())
+                +"                Tổng xe ra :"+String.valueOf(DoanhThuGUI.getInstance().sumIntTXR())
+                +"                 Tổng tiền :"+String.valueOf(DoanhThuGUI.getInstance().sumIntTT()));
+                
+                
+                XWPFParagraph pkt2=document.createParagraph();
+		pkt2.setAlignment(ParagraphAlignment.LEFT);
+		run=pkt2.createRun();
+		run.setFontSize(10);
+		run.setBold(true);
+		run.setText("");
                 
 		XWPFParagraph p7=document.createParagraph();
 		p7.setAlignment(ParagraphAlignment.RIGHT);
 		run=p7.createRun();
-		run.setFontSize(16);
+		run.setFontSize(10);
 		run.setBold(true);
 		run.setText("Người lập báo cáo");
-	
+                
+                XWPFParagraph pkt3=document.createParagraph();
+		pkt3.setAlignment(ParagraphAlignment.LEFT);
+		run=pkt3.createRun();
+		run.setFontSize(80);
+		run.setBold(true);
+		run.setText("");
+                
+                XWPFParagraph p8=document.createParagraph();
+		p8.setAlignment(ParagraphAlignment.RIGHT);
+		run=p8.createRun();
+		run.setFontSize(10);
+		run.setBold(true);
+		run.setText(ThongTinCaNhanBLL.getInstance().getNhanVien().getTenNhanVien());
+                
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                
+                
 	try {
-			FileOutputStream out = new FileOutputStream(new File("BaoCao//Báo cáo "+sdf.format(now)+".docx"));
+			FileOutputStream out = new FileOutputStream(new File("BaoCao//Báo cáo mã số "+sdf.format(now)+" .docx"));
 			document.write(out);
 			out.close();
 			document.close();

@@ -96,13 +96,13 @@ public class QLRaVaoBenGUI {
 		
 		JPanel pnTitle = new JPanel();
 		pnTitle.setLayout(null);
-		pnTitle.setBackground(SystemColor.activeCaption);
+		pnTitle.setBackground(new Color(237,223,179));
 		pnTitle.setBounds(0, 0, 1078, 60);
 		pnMain.add(pnTitle);
 		
 		JPanel pnDanhSachKhuVuc = new JPanel();
 		pnDanhSachKhuVuc.setLayout(null);
-		pnDanhSachKhuVuc.setBackground(SystemColor.activeCaption);
+		pnDanhSachKhuVuc.setBackground(new Color(237,223,179));
 		pnDanhSachKhuVuc.setBounds(0, 60, 1065, 500);
 		pnMain.add(pnDanhSachKhuVuc);
 		
@@ -114,6 +114,7 @@ public class QLRaVaoBenGUI {
 		lblTitle.setForeground(Color.RED);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 24));
+                lblTitle.setForeground(new Color(161,0,53));
 		lblTitle.setBounds(419, 11, 280, 39);
 		pnTitle.add(lblTitle);
 		

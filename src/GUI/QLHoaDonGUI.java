@@ -77,19 +77,19 @@ public static QLHoaDonGUI getInstance() {
                 
                 JPanel pnTitle = new JPanel();
 		pnTitle.setLayout(null);
-		pnTitle.setBackground(SystemColor.activeCaption);
+		pnTitle.setBackground(new Color(237,223,179));
 		pnTitle.setBounds(0, 0, 1078, 110);
 		pnMain.add(pnTitle);
 		
 		JPanel pnDoanhThu=new JPanel();
                 pnDoanhThu.setLayout(null);
-		pnDoanhThu.setBackground(SystemColor.activeCaption);
+		pnDoanhThu.setBackground(new Color(237,223,179));
 		pnDoanhThu.setBounds(0, 115, 1065, 560-115);
 		pnMain.add(pnDoanhThu);
                 
                 JPanel pnQLDoanhThu=new JPanel();
                 pnQLDoanhThu.setLayout(null);
-		pnQLDoanhThu.setBackground(SystemColor.activeCaption);
+		pnQLDoanhThu.setBackground(new Color(237,223,179));
 		pnQLDoanhThu.setBounds(0, 447, 1065, 445-352);
 		pnMain.add(pnQLDoanhThu);
                 
@@ -123,20 +123,20 @@ public static QLHoaDonGUI getInstance() {
                   
                  
                 
-                lblNhanVienxs= new JLabel("Nhân Viên Tích Cực  : ");
-		lblNhanVienxs.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblNhanVienxs.setBounds(150, 380, 200, 50);
-		pnDoanhThu.add(lblNhanVienxs);
-                
-                lblMaxNgayGui= new JLabel("Số Ngày Gửi Nhiều Nhất  : ");
-		lblMaxNgayGui.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblMaxNgayGui.setBounds(480, 380, 200, 50);
-		pnDoanhThu.add(lblMaxNgayGui);
-                
-                lblAvgTien= new JLabel("Trung Bình Tiền Gửi  : ");
-		lblAvgTien.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblAvgTien.setBounds(760, 380, 200, 50);
-		pnDoanhThu.add(lblAvgTien);
+//                lblNhanVienxs= new JLabel("Nhân Viên Tích Cực  : ");
+//		lblNhanVienxs.setFont(new Font("Times New Roman", Font.BOLD, 16));
+//		lblNhanVienxs.setBounds(150, 380, 200, 50);
+//		pnDoanhThu.add(lblNhanVienxs);
+//                
+//                lblMaxNgayGui= new JLabel("Số Ngày Gửi Nhiều Nhất  : ");
+//		lblMaxNgayGui.setFont(new Font("Times New Roman", Font.BOLD, 16));
+//		lblMaxNgayGui.setBounds(480, 380, 200, 50);
+//		pnDoanhThu.add(lblMaxNgayGui);
+//                
+//                lblAvgTien= new JLabel("Trung Bình Tiền Gửi  : ");
+//		lblAvgTien.setFont(new Font("Times New Roman", Font.BOLD, 16));
+//		lblAvgTien.setBounds(760, 380, 200, 50);
+//		pnDoanhThu.add(lblAvgTien);
                 
                 int TongTien=0;
                 
@@ -153,19 +153,19 @@ public static QLHoaDonGUI getInstance() {
 //                int avgTien=TongTien/count;
 
                 
-                lTNhanVienxs= new JLabel(" Trần Đức Đạt");
-		lTNhanVienxs.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lTNhanVienxs.setBounds(310, 380, 150, 50);
-		pnDoanhThu.add(lTNhanVienxs);
-                
-                lTMaxNgayGui = new JLabel("15");
-		lTMaxNgayGui.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lTMaxNgayGui.setBounds(670, 380, 100, 50);
-		pnDoanhThu.add(lTMaxNgayGui);
-                
-                lTAvgTien = new JLabel( "125000 VNĐ");
-		lTAvgTien.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lTAvgTien.setBounds(930,380,200, 50);
-		pnDoanhThu.add(lTAvgTien);
+//                lTNhanVienxs= new JLabel(" Trần Đức Đạt");
+//		lTNhanVienxs.setFont(new Font("Times New Roman", Font.BOLD, 16));
+//		lTNhanVienxs.setBounds(310, 380, 150, 50);
+//		pnDoanhThu.add(lTNhanVienxs);
+//                
+//                lTMaxNgayGui = new JLabel("15");
+//		lTMaxNgayGui.setFont(new Font("Times New Roman", Font.BOLD, 16));
+//		lTMaxNgayGui.setBounds(670, 380, 100, 50);
+//		pnDoanhThu.add(lTMaxNgayGui);
+//                
+//                lTAvgTien = new JLabel( "125000 VNĐ");
+//		lTAvgTien.setFont(new Font("Times New Roman", Font.BOLD, 16));
+//		lTAvgTien.setBounds(930,380,200, 50);
+//		pnDoanhThu.add(lTAvgTien);
 }}
 

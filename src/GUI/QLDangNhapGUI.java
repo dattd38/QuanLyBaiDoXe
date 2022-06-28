@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
+import org.apache.poi.ss.formula.functions.Code;
 
 
 
@@ -81,7 +82,7 @@ public class QLDangNhapGUI {
 		
 		JLabel lblQLy = new JLabel("QUẢN LÝ BÃI ĐỖ XE");
 		lblQLy.setFont(new Font("Times New Roman", Font.BOLD, 28));
-                lblQLy.setForeground(Color.RED);
+                lblQLy.setForeground(new Color(97,12,99));
 		lblQLy.setBounds(180, 0, 340, 40);
 		pnTongQuanDangNhap.add(lblQLy);
                 
@@ -101,6 +102,7 @@ public class QLDangNhapGUI {
 		pnDangNhap.setLayout(null);
 		
 		JLabel lblTaiKhoan = new JLabel("Tên tài khoản:*");
+                lblTaiKhoan.setForeground(new Color(161,0,53));
 		lblTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		lblTaiKhoan.setBounds(10, 140, 102, 20);
 		pnDangNhap.add(lblTaiKhoan);
@@ -108,6 +110,7 @@ public class QLDangNhapGUI {
 		
 		pfMatKhau = new JPasswordField();
 		pfMatKhau.setBounds(111, 195, 167, 26);
+                pfMatKhau.setForeground(new Color(161,0,53));
 		pfMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnDangNhap.add(pfMatKhau);
 		pfMatKhau.setColumns(10);
@@ -141,12 +144,13 @@ public class QLDangNhapGUI {
 		
 		JLabel lblMatKhau = new JLabel("Mật khẩu:*");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                lblMatKhau.setForeground(new Color(161,0,53));
 		lblMatKhau.setBounds(10, 195, 76, 27);
 		pnDangNhap.add(lblMatKhau);
 		
 		lblMessage = new JLabel("(*) Không được để trống");
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 12));
-		lblMessage.setForeground(Color.RED);
+		lblMessage.setForeground(new Color(161,0,53));
 		lblMessage.setBounds(110, 250, 156, 27);
 		pnDangNhap.add(lblMessage);
 		
@@ -161,7 +165,7 @@ public class QLDangNhapGUI {
 				}
 			}
 		});
-		btnDangNhap.setBackground(SystemColor.textHighlight);
+		btnDangNhap.setBackground(new Color(161,0,53));
 		btnDangNhap.setForeground(Color.WHITE);
 		btnDangNhap.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnDangNhap.setBounds(0, 300, 130, 35);
@@ -200,7 +204,7 @@ public class QLDangNhapGUI {
 				System.exit(0);
 			}
 		});
-		btnThoat.setBackground(SystemColor.textHighlight);
+		btnThoat.setBackground(new Color(161,0,53));
 		btnThoat.setForeground(Color.WHITE);
 		btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnThoat.setBounds(158, 300, 130, 35);
@@ -208,6 +212,7 @@ public class QLDangNhapGUI {
 		
 		tfTaiKhoan = new JTextField();
 		tfTaiKhoan.setBounds(111, 137, 167, 26);
+                tfTaiKhoan.setForeground(new Color(161,0,53));
 		tfTaiKhoan.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		pnDangNhap.add(tfTaiKhoan);
 		tfTaiKhoan.setColumns(10);
@@ -241,8 +246,8 @@ public class QLDangNhapGUI {
 		JLabel lblDangNhap = new JLabel("ĐĂNG NHẬP");
 		lblDangNhap.setBounds(80, 60, 149, 35);
 		pnDangNhap.add(lblDangNhap);
-		lblDangNhap.setForeground(Color.BLUE);
-		lblDangNhap.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		lblDangNhap.setForeground(new Color(161,0,53));
+		lblDangNhap.setFont(new Font("Times New Roman", Font.BOLD, 22));
 	}
 
 }

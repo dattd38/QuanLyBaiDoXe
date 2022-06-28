@@ -39,14 +39,13 @@ public class QLRaVaoBenBLL {
         }
         if (rvb.getBienSoXe().equals(""))
         {
-            throw new MyNullException("Biển số xé đang bị trống");
+            throw new MyNullException("Biển số xe đang bị trống");
         }
         return true;
     }
 
     public String addProcessing(RaVaoBenDTO rvb) {
         try{    
-            checkData(rvb);
             ArrayList<VeDTO> dsVe = VeDAL.getInstance().reloadResources();
             for(VeDTO item: dsVe) {
                 if(item.getMaVe().equals(rvb.getMaVe())){
@@ -65,6 +64,7 @@ public class QLRaVaoBenBLL {
                     }	
             }
             String msg;
+            checkData(rvb);
             int result = RaVaoBenDAL.getInstance().addRaVaoBen(rvb);
             switch(result)
             {
@@ -75,6 +75,7 @@ public class QLRaVaoBenBLL {
                     break;
                 default:
                     msg = "Xe Vào Thành Công ";
+                    break;
             }
                 return msg;
         }

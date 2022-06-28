@@ -40,234 +40,229 @@ import javax.swing.JFrame;
 
 
 public class QLGuiXeGUI {
-	static QLGuiXeGUI instance = null;
+    static QLGuiXeGUI instance = null;
     private static String bienSoXe;
-	private JPanel pnMain;
-	private JTable tbViTriTrong;
-	private JTextField tfTenViTri;
-        private JTextField tfRavaoBen;
-	private JTextField tfMaViTri;
-	private JTextField tfBienSoXe;
-	private JDateChooser jdNgayVao;
-	private JRadioButton rdbtnTrong;
-	private JLabel ltNgayVao;
-	private JLabel lblMessage;
-	private JLabel lblTenKhuVuc;
-	private JLabel lTTenKhuVuc;
-	private JLabel lblMaVe;
-	private JTextField lTMaVe;
-	private JLabel lblTenViTri;
-	private JLabel lTTenViTri;
-	private JLabel lblBienSoXe;
-	private JLabel lblNgayVao;
-        private JLabel lblThongBao;
-        private JComboBox<String> cbbMaVe;
+    private JPanel pnMain;
+    private JTable tbViTriTrong;
+    private JTextField tfTenViTri;
+    private JTextField tfRavaoBen;
+    private JTextField tfMaViTri;
+    private JTextField tfBienSoXe;
+    private JDateChooser jdNgayVao;
+    private JRadioButton rdbtnTrong;
+    private JLabel ltNgayVao;
+    private JLabel lblMessage;
+    private JLabel lblTenKhuVuc;
+    private JLabel lTTenKhuVuc;
+    private JLabel lblMaVe;
+    private JTextField lTMaVe;
+    private JLabel lblTenViTri;
+    private JLabel lTTenViTri;
+    private JLabel lblBienSoXe;
+    private JLabel lblNgayVao;
+    private JLabel lblThongBao;
+    private JComboBox<String> cbbMaVe;
 
-	private boolean isEdit = true;
-	private JTextField tfTimKiem;
+    private boolean isEdit = true;
+    private JTextField tfTimKiem;
 
-	public QLGuiXeGUI(String tenKhuVuc) {
-		initialize(tenKhuVuc);
-		loadResources(tenKhuVuc);
-                
-                
-	}
+    public QLGuiXeGUI(String tenKhuVuc) {
+        initialize(tenKhuVuc);
+        loadResources(tenKhuVuc);
+    }
 
-	private void loadResources(String tenKhuVuc) {
-		tbViTriTrong.setModel(QLViTriBLL.getInstance().getResources(tenKhuVuc));
-	}
+    private void loadResources(String tenKhuVuc) {
+        tbViTriTrong.setModel(QLViTriBLL.getInstance().getResources(tenKhuVuc));
+    }
 
-	public static QLGuiXeGUI getInstance(String tenKhuVuc) {
-		if (instance == null)
-			instance = new QLGuiXeGUI(tenKhuVuc);
-		return instance;
-	}
-     
-        
-	public JPanel getPnMain() {
-		return pnMain;
-	}
-
-	public void reloadResources(String tenKhuVuc) {
-		DefaultTableModel dm = (DefaultTableModel) tbViTriTrong.getModel();
-		dm.getDataVector().removeAllElements();
-		dm.fireTableDataChanged();
-                tbViTriTrong.setModel(QLViTriBLL.getInstance().reloadResources(tenKhuVuc));
-
-	}
-
-	private void setStateForTexfeild() {
-		tfMaViTri.setEditable(isEdit);
-	}
-
-	private void clearField() {
-
-		lTTenViTri.setText("");
-                tfBienSoXe.setText("");
-               
-		cbbMaVe.setSelectedIndex(0);
-                
-
-	}
-
-	@SuppressWarnings("deprecation")
-	public void initialize(String tenKhuVuc) {
-		pnMain = new JPanel();
-		pnMain.setLayout(null);
-		pnMain.setBounds(0, 0, 1065, 560);
-		pnMain.setBackground(Color.WHITE);
-
-		JPanel pnTitle = new JPanel();
-		pnTitle.setLayout(null);
-		pnTitle.setBackground(SystemColor.activeCaption);
-		pnTitle.setBounds(0, 0, 1078, 90);
-		pnMain.add(pnTitle);
-
-		JPanel pnDanhSachKhuVuc = new JPanel();
-		pnDanhSachKhuVuc.setLayout(null);
-		pnDanhSachKhuVuc.setBackground(SystemColor.activeCaption);
-		pnDanhSachKhuVuc.setBounds(0, 92, 300, 468);
-		pnMain.add(pnDanhSachKhuVuc);
-
-		JPanel pnThongTinKhuVuc = new JPanel();
-		pnThongTinKhuVuc.setLayout(null);
-		pnThongTinKhuVuc.setBackground(SystemColor.activeCaption);
-		pnThongTinKhuVuc.setBounds(303, 92, 770, 468);
-		pnMain.add(pnThongTinKhuVuc);
-
-		// add control
-		// control of Title
-		JLabel lblTitle = new JLabel("GỬI XE");
-		lblTitle.setForeground(Color.RED);
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		lblTitle.setBounds(419, 11, 239, 39);
-		pnTitle.add(lblTitle);
-
-		// control cho danh sach
-		tbViTriTrong = new JTable();
-		tbViTriTrong.setBounds(0, 0, 300, 468);
-		JScrollPane sc = new JScrollPane(tbViTriTrong, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		sc.setBounds(0, 0, 300, 468);
-		tbViTriTrong.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-                
-			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
-                                if(tbViTriTrong.getSelectedRow()<0)
-                                    return ;
-				lTTenViTri.setText(tbViTriTrong.getValueAt(tbViTriTrong.getSelectedRow(), 0).toString());
-				
-			}
-
-		});
-                tbViTriTrong.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		pnDanhSachKhuVuc.add(sc, BorderLayout.CENTER);
-
-                lblThongBao = new JLabel("(*) Không được bỏ trống ");
-		lblThongBao.setFont(new Font("Times New Roman", Font.ITALIC, 20));
-		lblThongBao.setForeground(Color.red);
-		lblThongBao.setBounds(50, 35, 300, 40);
-		pnThongTinKhuVuc.add(lblThongBao);
-                
-		JLabel lblMaVe = new JLabel("Mã Vé          : ");
-		lblMaVe.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblMaVe.setBounds(50, 100, 140, 40);
-		pnThongTinKhuVuc.add(lblMaVe);
-                
-                cbbMaVe = new JComboBox<String>();
-                ArrayList<VeDTO> dsVe = new ArrayList<VeDTO>();
-                dsVe=VeDAL.getInstance().reloadResources();
-		cbbMaVe.setBounds(200, 100, 140, 30);
-		
-		for (VeDTO veDTO : dsVe) {
-				if(veDTO.getTinhTrangVe().equals("ĐANG SỬ DỤNG")) {
-					continue;			}
-				cbbMaVe.addItem(veDTO.getMaVe());
-			}
-		pnThongTinKhuVuc.add(cbbMaVe);
-                
+    public static QLGuiXeGUI getInstance(String tenKhuVuc) {
+        if (instance == null)
+                instance = new QLGuiXeGUI(tenKhuVuc);
+        return instance;
+    }
 
 
-		JLabel lblTenKhuVuc = new JLabel("Tên Khu Vực : ");
-		lblTenKhuVuc.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblTenKhuVuc.setBounds(400, 100, 140, 40);
-		pnThongTinKhuVuc.add(lblTenKhuVuc);
+    public JPanel getPnMain() {
+        return pnMain;
+    }
 
-		lTTenKhuVuc = new JLabel(tenKhuVuc);
-		lTTenKhuVuc.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lTTenKhuVuc.setBounds(550, 100, 140, 40);
-		pnThongTinKhuVuc.add(lTTenKhuVuc);
+    public void reloadResources(String tenKhuVuc) {
+        DefaultTableModel dm = (DefaultTableModel) tbViTriTrong.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        tbViTriTrong.setModel(QLViTriBLL.getInstance().reloadResources(tenKhuVuc));
+    }
 
-		lblNgayVao = new JLabel("Ngày Vào    : ");
-		lblNgayVao.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblNgayVao.setBounds(50, 190, 140, 40);
-		pnThongTinKhuVuc.add(lblNgayVao);
+    private void setStateForTexfeild() {
+        tfMaViTri.setEditable(isEdit);
+    }
 
-		ltNgayVao = new JLabel("*");
-               // ltNgayVao = new JDateChooser();
-		ltNgayVao.setBounds(200, 190, 140, 40);
-		ltNgayVao.setFont(new Font("Times New Roman", Font.BOLD, 20));
-                SimpleDateFormat fm=new SimpleDateFormat("dd-MM-yyyy");
-                Calendar   cal = Calendar.getInstance();
-                java.util.Date date = cal.getTime();
-                ltNgayVao.setText(fm.format(date));
+    private void clearField() {
+        lTTenViTri.setText("");
+        tfBienSoXe.setText("");
 
-		pnThongTinKhuVuc.add(ltNgayVao);
+        cbbMaVe.setSelectedIndex(0);
+    }
 
-		lblTenViTri = new JLabel("Tên Vị Trí       : ");
-		lblTenViTri.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblTenViTri.setBounds(400, 190, 140, 40);
-		pnThongTinKhuVuc.add(lblTenViTri);
+    @SuppressWarnings("deprecation")
+    public void initialize(String tenKhuVuc) {
+        pnMain = new JPanel();
+        pnMain.setLayout(null);
+        pnMain.setBounds(0, 0, 1065, 560);
+        pnMain.setBackground(Color.WHITE);
 
-		lTTenViTri = new JLabel("Chọn Vị Trí");
-		lTTenViTri.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lTTenViTri.setBounds(550, 190, 140, 40);
-		pnThongTinKhuVuc.add(lTTenViTri);
-                
-              
+        JPanel pnTitle = new JPanel();
+        pnTitle.setLayout(null);
+        pnTitle.setBackground(new Color(237,223,179));
+        pnTitle.setBounds(0, 0, 1078, 90);
+        pnMain.add(pnTitle);
 
-		lblBienSoXe = new JLabel("Biển Số Xe   : ");
-		lblBienSoXe.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblBienSoXe.setBounds(50, 280, 140, 40);
-		pnThongTinKhuVuc.add(lblBienSoXe);
+        JPanel pnDanhSachKhuVuc = new JPanel();
+        pnDanhSachKhuVuc.setLayout(null);
+        pnDanhSachKhuVuc.setBackground(new Color(237,223,179));
+        pnDanhSachKhuVuc.setBounds(0, 92, 300, 468);
+        pnMain.add(pnDanhSachKhuVuc);
 
-		tfBienSoXe = new JTextField();
-		tfBienSoXe.setBounds(200, 280, 140, 30);
-		tfBienSoXe.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		pnThongTinKhuVuc.add(tfBienSoXe);
+        JPanel pnThongTinKhuVuc = new JPanel();
+        pnThongTinKhuVuc.setLayout(null);
+        pnThongTinKhuVuc.setBackground(new Color(237,223,179));
+        pnThongTinKhuVuc.setBounds(303, 92, 770, 468);
+        pnMain.add(pnThongTinKhuVuc);
 
-		Button btnLap = new Button(" Lập ");
-		btnLap.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		btnLap.setBounds(500, 350, 160, 80);
-		btnLap.setForeground(Color.white);
-		btnLap.setBackground(Color.MAGENTA);
-		btnLap.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                              try{      
+        // add control
+        // control of Title
+        JLabel lblTitle = new JLabel("GỬI XE");
+        lblTitle.setForeground(new Color(161,0,53));
+        lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        lblTitle.setBounds(419, 11, 239, 39);
+        lblTitle.setForeground(new Color(161,0,53));
+        pnTitle.add(lblTitle);
 
-                                        SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
-                                        Calendar   cal = Calendar.getInstance();
-                                        java.util.Date date = cal.getTime();
-					String ngayvao = fm.format(date);
-                               RaVaoBenDTO rvb= new RaVaoBenDTO(cbbMaVe.getSelectedItem().toString(), lTTenViTri.getText(),
-                               lTTenKhuVuc.getText(), tfBienSoXe.getText(), Date.valueOf(ngayvao));
-                               String result = QLRaVaoBenBLL.getInstance().addProcessing(rvb);
-                               lblThongBao.setText(result); 
-                               cbbMaVe.removeItem(cbbMaVe.getSelectedItem());
-                               reloadResources(tenKhuVuc);
-                               TrangChuGUI.getInstance().initittle();
-                               clearField();
-                              }   
-                             catch(Exception ex)
-                             {
-                                 ex.printStackTrace();
-                             }
-                                     
-			}
-		});
-		pnThongTinKhuVuc.add(btnLap);
-	}
+        // control cho danh sach
+        tbViTriTrong = new JTable();
+        tbViTriTrong.setBounds(0, 0, 300, 468);
+        JScrollPane sc = new JScrollPane(tbViTriTrong, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        sc.setBounds(0, 0, 300, 468);
+        tbViTriTrong.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if(tbViTriTrong.getSelectedRow()<0)
+                    return ;
+                lTTenViTri.setText(tbViTriTrong.getValueAt(tbViTriTrong.getSelectedRow(), 0).toString());
 
+            }
+        });
+        tbViTriTrong.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        pnDanhSachKhuVuc.add(sc, BorderLayout.CENTER);
+
+        lblThongBao = new JLabel("(*) Không được bỏ trống ");
+        lblThongBao.setFont(new Font("Times New Roman", Font.ITALIC, 20));
+        lblThongBao.setForeground(new Color(161,0,53));
+        lblThongBao.setBounds(50, 35, 300, 40);
+        pnThongTinKhuVuc.add(lblThongBao);
+
+        JLabel lblMaVe = new JLabel("Mã Vé          : ");
+        lblMaVe.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblMaVe.setBounds(50, 100, 140, 40);
+        lblMaVe.setForeground(new Color(161,0,53));
+        pnThongTinKhuVuc.add(lblMaVe);
+
+        cbbMaVe = new JComboBox<String>();
+        ArrayList<VeDTO> dsVe = new ArrayList<VeDTO>();
+        dsVe=VeDAL.getInstance().reloadResources();
+        cbbMaVe.setBounds(200, 100, 140, 30);
+        cbbMaVe.setForeground(new Color(161,0,53));
+        for (VeDTO veDTO : dsVe) {
+            if(veDTO.getTinhTrangVe().equals("ĐANG SỬ DỤNG")) {
+                    continue;			}
+            cbbMaVe.addItem(veDTO.getMaVe());
+        }
+        pnThongTinKhuVuc.add(cbbMaVe);
+
+        JLabel lblTenKhuVuc = new JLabel("Tên Khu Vực : ");
+        lblTenKhuVuc.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblTenKhuVuc.setForeground(new Color(161,0,53));
+        lblTenKhuVuc.setBounds(400, 100, 140, 40);
+        pnThongTinKhuVuc.add(lblTenKhuVuc);
+
+        lTTenKhuVuc = new JLabel(tenKhuVuc);
+        lTTenKhuVuc.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lTTenKhuVuc.setForeground(new Color(161,0,53));
+        lTTenKhuVuc.setBounds(550, 100, 140, 40);
+        pnThongTinKhuVuc.add(lTTenKhuVuc);
+
+        lblNgayVao = new JLabel("Ngày Vào    : ");
+        lblNgayVao.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblNgayVao.setForeground(new Color(161,0,53));
+        lblNgayVao.setBounds(50, 190, 140, 40);
+        pnThongTinKhuVuc.add(lblNgayVao);
+
+        ltNgayVao = new JLabel("*");
+       // ltNgayVao = new JDateChooser();
+        ltNgayVao.setBounds(200, 190, 140, 40);
+        ltNgayVao.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        ltNgayVao.setForeground(new Color(161,0,53));
+        SimpleDateFormat fm=new SimpleDateFormat("dd-MM-yyyy");
+        Calendar   cal = Calendar.getInstance();
+        java.util.Date date = cal.getTime();
+        ltNgayVao.setText(fm.format(date));
+
+        pnThongTinKhuVuc.add(ltNgayVao);
+
+        lblTenViTri = new JLabel("Tên Vị Trí       : ");
+        lblTenViTri.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblTenViTri.setForeground(new Color(161,0,53));
+        lblTenViTri.setBounds(400, 190, 140, 40);
+        pnThongTinKhuVuc.add(lblTenViTri);
+
+        lTTenViTri = new JLabel("Chọn Vị Trí");
+        lTTenViTri.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lTTenViTri.setForeground(new Color(161,0,53));
+        lTTenViTri.setBounds(550, 190, 140, 40);
+        pnThongTinKhuVuc.add(lTTenViTri);
+
+        lblBienSoXe = new JLabel("Biển Số Xe   : ");
+        lblBienSoXe.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblBienSoXe.setForeground(new Color(161,0,53));
+        lblBienSoXe.setBounds(50, 280, 140, 40);
+        pnThongTinKhuVuc.add(lblBienSoXe);
+
+        tfBienSoXe = new JTextField();
+        tfBienSoXe.setBounds(200, 280, 140, 30);
+        tfBienSoXe.setForeground(new Color(161,0,53));
+        tfBienSoXe.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        pnThongTinKhuVuc.add(tfBienSoXe);
+
+        Button btnLap = new Button(" Lập ");
+        btnLap.setFont(new Font("Times New Roman", Font.BOLD, 24));
+        btnLap.setBounds(500, 350, 160, 80);
+        btnLap.setForeground(Color.white);
+        btnLap.setBackground(new Color(161,0,53));
+        btnLap.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{      
+                    SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
+                    Calendar   cal = Calendar.getInstance();
+                    java.util.Date date = cal.getTime();
+                    String ngayvao = fm.format(date);
+                    RaVaoBenDTO rvb= new RaVaoBenDTO(cbbMaVe.getSelectedItem().toString(), lTTenViTri.getText(),
+                    lTTenKhuVuc.getText(), tfBienSoXe.getText(), Date.valueOf(ngayvao));
+                    String result = QLRaVaoBenBLL.getInstance().addProcessing(rvb);
+                    lblThongBao.setText(result); 
+                    
+                    cbbMaVe.removeItem(cbbMaVe.getSelectedItem());
+                    reloadResources(tenKhuVuc);
+                    TrangChuGUI.getInstance().initittle();
+                    clearField();
+                }   
+               catch(Exception ex)
+               {
+                   ex.printStackTrace();
+               }
+            }
+        });
+        pnThongTinKhuVuc.add(btnLap);
+    }
 }

@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 
 import DTO.KhuVucDTO;
 
-
 public class QLKhuVucBLL {
 	
 	public static QLKhuVucBLL instance;
@@ -25,11 +24,11 @@ public class QLKhuVucBLL {
 		ArrayList<KhuVucDTO> dsKhuVuc = new ArrayList<KhuVucDTO>();
 		dsKhuVuc=KhuVucDAL.getInstance().getResources();
 		DefaultTableModel dtm = new DefaultTableModel();
+                
 		try {
 			
 			dtm.addColumn("Tên Khu Vực");
 			dtm.addColumn("Tình Trạng");
-			int i = 1;
 			for(KhuVucDTO kv : dsKhuVuc) {
                             
 				if(kv.getTrangThaiKhuVuc().equals("HẾT CHỖ")) {
@@ -54,12 +53,12 @@ public class QLKhuVucBLL {
 		ArrayList<KhuVucDTO> dsKhuVuc = new ArrayList<KhuVucDTO>();
 		dsKhuVuc=KhuVucDAL.getInstance().getResources();
 		DefaultTableModel dtm = new DefaultTableModel();
+                
 		try {
 			
 			
 			dtm.addColumn("Tên Khu Vực");
 			dtm.addColumn("Tình Trạng");
-			int i = 1;
 			for(KhuVucDTO kv : dsKhuVuc) {
 				if(kv.getTrangThaiKhuVuc().equals("HẾT CHỖ")) {
 					continue;

@@ -56,7 +56,7 @@ public class QLDoanhThuGUI {
                                                  }
 	 private static CategoryDataset createDataset() {
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-         dataset.addValue(0000000, "SỐ TIỀN", "T 1 ");
+        dataset.addValue(0000000, "SỐ TIỀN", "T 1 ");
         dataset.addValue(000000, "SỐ TIỀN", "T 2");
         dataset.addValue(00000, "SỐ TIỀN", "T 3");
         dataset.addValue(000000, "SỐ TIỀN", "T 4 ");

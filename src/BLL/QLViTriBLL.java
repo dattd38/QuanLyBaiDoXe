@@ -76,24 +76,19 @@ public class QLViTriBLL {
 		}
 		return dtm;
 	}
-public int isCount()
-{ 
-    ArrayList<ViTriDTO> dsViTri = new ArrayList<ViTriDTO>();
-		dsViTri=ViTriDAL.getInstance().reloadResources();
-		DefaultTableModel dtm = new DefaultTableModel();
-    int soChoTrong=0;
-    int i = 1;
-			for (ViTriDTO vt : dsViTri) {
-				if( vt.getTrangThaiViTri().equals("ĐẦY")) {
-					continue;
-				}
-                             soChoTrong++;   
-                        }
-            return soChoTrong;
-    
-
-	
-}
+    public int isCount(){ 
+        ArrayList<ViTriDTO> dsViTri = new ArrayList<ViTriDTO>();
+        dsViTri=ViTriDAL.getInstance().reloadResources();
+        DefaultTableModel dtm = new DefaultTableModel();
+        int soChoTrong=0;
+        for (ViTriDTO vt : dsViTri) {
+            if( vt.getTrangThaiViTri().equals("ĐẦY")) {
+                continue;
+            }
+            soChoTrong++;   
+        }
+                return soChoTrong;
+    }
 }
 
 

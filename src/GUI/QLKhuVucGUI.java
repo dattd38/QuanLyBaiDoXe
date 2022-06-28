@@ -77,17 +77,17 @@ public class QLKhuVucGUI {
 		pnMain = new JPanel();
 		pnMain.setLayout(null);
 		pnMain.setBounds(0, 0, 1065, 560);
-		pnMain.setBackground(Color.WHITE);
+		pnMain.setBackground(new Color(237,223,179));
 		
 		JPanel pnTitle = new JPanel();
 		pnTitle.setLayout(null);
-		pnTitle.setBackground(SystemColor.activeCaption);
+		pnTitle.setBackground(new Color(237,223,179));
 		pnTitle.setBounds(0, 0, 1078, 60);
 		pnMain.add(pnTitle);
 		
 		JPanel pnDanhSachKhuVuc = new JPanel();
 		pnDanhSachKhuVuc.setLayout(null);
-		pnDanhSachKhuVuc.setBackground(SystemColor.activeCaption);
+		pnDanhSachKhuVuc.setBackground(new Color(237,223,179));
 		pnDanhSachKhuVuc.setBounds(0, 60, 1065, 500);
 		pnMain.add(pnDanhSachKhuVuc);
 		
@@ -96,7 +96,7 @@ public class QLKhuVucGUI {
 		//add control
 		//control of Title
 		JLabel lblTitle = new JLabel("KHU VỰC CÒN CHỖ TRỐNG");
-		lblTitle.setForeground(Color.RED);
+		lblTitle.setForeground(new Color(161,0,53));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblTitle.setBounds(350, 11, 400, 39);

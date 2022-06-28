@@ -35,6 +35,14 @@ public class ViTriDTO {
 	public void setTrangThaiViTri(String trangThaiViTri) {
 		this.trangThaiViTri = trangThaiViTri;
 	}
+
+    public boolean getTrangThaiViTri(String đầy) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public boolean getTenKhuVuc(String kva) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 	
 
 }

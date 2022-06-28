@@ -27,6 +27,7 @@ import BLL.QLVeBLL;
 import BLL.QLViTriBLL;
 import DTO.RaVaoBenDTO;
 import static GUI.HoaDonGUI.instance;
+import com.microsoft.sqlserver.jdbc.dns.DNSRecordSRV;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Button;
 import java.awt.Label;
@@ -85,35 +86,35 @@ RaVaoBenDTO rvb;
                 pnMain = new JPanel();
 		pnMain.setLayout(null);
 		pnMain.setBounds(0, 0, 1065, 560);
-		pnMain.setBackground(Color.WHITE);
+		pnMain.setBackground(new Color(237,223,179));
                 
                 JPanel pnTitle = new JPanel();
 		pnTitle.setLayout(null);
-		pnTitle.setBackground(SystemColor.activeCaption);
+		pnTitle.setBackground(new Color(237,223,179));
 		pnTitle.setBounds(0, 0, 1078, 110);
 		pnMain.add(pnTitle);
 		
 		JPanel pnDoanhThu=new JPanel();
                 pnDoanhThu.setLayout(null);
-		pnDoanhThu.setBackground(SystemColor.activeCaption);
+		pnDoanhThu.setBackground(new Color(237,223,179));
 		pnDoanhThu.setBounds(0, 112, 1065, 350);
 		pnMain.add(pnDoanhThu);
                 
                 pnQLDoanhThu=new JPanel();
                 pnQLDoanhThu.setLayout(null);
-		pnQLDoanhThu.setBackground(SystemColor.activeCaption);
+		pnQLDoanhThu.setBackground(new Color(237,223,179));
 		pnQLDoanhThu.setBounds(0, 462, 1065, 560-462);
 		pnMain.add(pnQLDoanhThu);
                 
                 JLabel lblTitle = new JLabel("DOANH THU");
-		lblTitle.setForeground(Color.RED);
+		lblTitle.setForeground(new Color(161,0,53));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		lblTitle.setBounds(375, 10, 350, 39);
 		pnTitle.add(lblTitle);
                 
                 JLabel lblThang = new JLabel();
-		lblThang.setForeground(Color.RED);
+		lblThang.setForeground(new Color(161,0,53));
 		lblThang.setHorizontalAlignment(SwingConstants.CENTER);
 		lblThang.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		lblThang.setBounds(550, 23, 239, 39);
@@ -123,6 +124,7 @@ RaVaoBenDTO rvb;
                 
                 JLabel lbTuNgay = new JLabel("Từ Ngày:");
 		lbTuNgay.setFont(new Font("Times New Roman", Font.BOLD, 16));
+                lbTuNgay.setForeground(new Color(161,0,53));
 		lbTuNgay.setBounds(15, 70, 80, 31);
 		pnTitle.add(lbTuNgay);
 		
@@ -130,24 +132,29 @@ RaVaoBenDTO rvb;
 		tfTuNgay.setBounds(90, 70, 120, 28);
 		tfTuNgay.setFont(new Font("Times New Roman", Font.BOLD, 16));
                 tfTuNgay.setDateFormatString("dd-MM-yyyy");
+                tfTuNgay.setForeground(new Color(161,0,53));
 		pnTitle.add(tfTuNgay);
                 
                 JLabel lbDenNgay = new JLabel("Đến Ngày:");
 		lbDenNgay.setFont(new Font("Times New Roman", Font.BOLD, 16));
+                lbDenNgay.setForeground(new Color(161,0,53));
 		lbDenNgay.setBounds(215, 70, 80, 31);
 		pnTitle.add(lbDenNgay);
-		
+                
+                
+                
                 tfDenNgay = new JDateChooser();
 		tfDenNgay.setBounds(300, 70, 120, 28);
 		tfDenNgay.setFont(new Font("Times New Roman", Font.BOLD, 16));
                 tfDenNgay.setDateFormatString("dd-MM-yyyy");
+                tfDenNgay.setForeground(new Color(161,0,53));
 		pnTitle.add(tfDenNgay);
                 
                 btnThongKe = new Button(" Thống Kê ");
                 btnThongKe.setFont(new Font("Times New Roman", Font.BOLD, 16));
                 btnThongKe.setBounds(750, 70, 100, 28);
                 btnThongKe.setForeground(Color.white);
-                btnThongKe.setBackground(Color.MAGENTA);
+                btnThongKe.setBackground(new Color(161,0,53));
                 btnThongKe.addActionListener(new ActionListener() {
                     @Override
                   
@@ -184,6 +191,7 @@ RaVaoBenDTO rvb;
                 lTTongXeVao= new JLabel();
 		lTTongXeVao.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lTTongXeVao.setBounds(460, 30, 100, 50);
+                lTTongXeVao.setForeground(new Color(161,0,53));
                 lTTongXeVao.setText("");
 		pnQLDoanhThu.add(lTTongXeVao);
                 lTTongXeVao.setVisible(true);
@@ -191,6 +199,7 @@ RaVaoBenDTO rvb;
                 lTTongXeRa= new JLabel();
 		lTTongXeRa.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lTTongXeRa.setBounds(730, 30, 100, 50);
+                lTTongXeRa.setForeground(new Color(161,0,53));
                 lTTongXeRa.setText("");
 		pnQLDoanhThu.add(lTTongXeRa);
                 lTTongXeRa.setVisible(true);
@@ -198,6 +207,7 @@ RaVaoBenDTO rvb;
                 lTTongTien= new JLabel();
 		lTTongTien.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lTTongTien.setBounds(930,30,250, 50);
+                lTTongTien.setForeground(new Color(161,0,53));
                 lTTongTien.setText("");
                 pnQLDoanhThu.add(lTTongTien);
                 lTTongTien.setVisible(true);
@@ -228,7 +238,7 @@ RaVaoBenDTO rvb;
                 btnLap.setFont(new Font("Times New Roman", Font.BOLD, 16));
                 btnLap.setBounds(900, 70, 100, 28);
                 btnLap.setForeground(Color.white);
-                btnLap.setBackground(Color.MAGENTA);
+                btnLap.setBackground(new Color(161,0,53));
                 btnLap.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -242,22 +252,56 @@ RaVaoBenDTO rvb;
                 lblTongXeVao= new JLabel("Tổng Xe Vào   : ");
 		lblTongXeVao.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblTongXeVao.setBounds(310, 30, 150, 50);
+                lblTongXeVao.setForeground(new Color(161,0,53));
 		pnQLDoanhThu.add(lblTongXeVao);
                 lblTongXeVao.setVisible(false);
                 
                 lblTongXeRa= new JLabel("Tổng Xe Ra   : ");
 		lblTongXeRa.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblTongXeRa.setBounds(560, 30, 150, 50);
+                lblTongXeRa.setForeground(new Color(161,0,53));
 		pnQLDoanhThu.add(lblTongXeRa);
                 lblTongXeRa.setVisible(false);
                 
                 lblTongTien= new JLabel("Tổng Tiền  : ");
 		lblTongTien.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblTongTien.setBounds(830, 30, 100, 50);
+                lblTongTien.setForeground(new Color(161,0,53));
 		pnQLDoanhThu.add(lblTongTien);
                 lblTongTien.setVisible(false);
                 
     }
- 
+    public int sumIntTXV()
+    {
+        int count1=tbDoanhThu.getRowCount();
+        int TongXeVao=0;
+        for(int i=0;i<count1;i++)
+        {
+           TongXeVao = TongXeVao+Integer.parseInt(tbDoanhThu.getValueAt(i, 1).toString());
+        }
+        return TongXeVao; 
+    }
+    public int sumIntTXR()
+    {
+        int count1=tbDoanhThu.getRowCount();
+        int TongXeRa=0;
+        for(int i=0;i<count1;i++)
+        {          
+           TongXeRa = TongXeRa+Integer.parseInt(tbDoanhThu.getValueAt(i, 2).toString());                
+        }
+        return TongXeRa;
+    }
+    public int sumIntTT()
+    {
+        int count1=tbDoanhThu.getRowCount();
+        int TongTien=0;
+        for(int i=0;i<count1;i++)
+        {
+                       
+           TongTien= TongTien+Integer.parseInt(tbDoanhThu.getValueAt(i, 3).toString());
+        }
+        return TongTien;
+    }
+    
 }
 
