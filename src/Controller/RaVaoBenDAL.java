@@ -40,15 +40,15 @@ public class RaVaoBenDAL {
 			
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
 			while(resultSet.next()) {			
-                                                                RaVaoBenDTO rvb =new RaVaoBenDTO();
-                                                                rvb.setMaVe(resultSet.getString(1));
-                                                                rvb.setTenViTri(resultSet.getString(2));
-                                                                rvb.setTenKhuVuc(resultSet.getString(3));
-                                                                rvb.setBienSoXe(resultSet.getString(4));
-                                                                rvb.setNgayVao(resultSet.getDate(5));
-                                                                rvb.setNgayRa(resultSet.getDate(6));
-                                                                rvb.setTrangThaiRvb(resultSet.getString(7));
-                                                                dsRaVaoBen.add(rvb);
+                            RaVaoBenDTO rvb =new RaVaoBenDTO();
+                            rvb.setMaVe(resultSet.getString(1));
+                            rvb.setTenViTri(resultSet.getString(2));
+                            rvb.setTenKhuVuc(resultSet.getString(3));
+                            rvb.setBienSoXe(resultSet.getString(4));
+                            rvb.setNgayVao(resultSet.getDate(5));
+                            rvb.setNgayRa(resultSet.getDate(6));
+                            rvb.setTrangThaiRvb(resultSet.getString(7));
+                            dsRaVaoBen.add(rvb);
                                                               
 			}      		
                                             }
@@ -74,15 +74,15 @@ public class RaVaoBenDAL {
 			
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
 			while(resultSet.next()) {			
-                                                                RaVaoBenDTO rvb =new RaVaoBenDTO();
-                                                                rvb.setMaVe(resultSet.getString(1));
-                                                                rvb.setTenViTri(resultSet.getString(2));
-                                                                rvb.setTenKhuVuc(resultSet.getString(3));
-                                                                rvb.setBienSoXe(resultSet.getString(4));
-                                                                rvb.setNgayVao(resultSet.getDate(5));
-                                                                rvb.setNgayRa(resultSet.getDate(6));
-                                                                rvb.setTrangThaiRvb(resultSet.getString(7));
-                                                                dsRaVaoBen.add(rvb);
+                            RaVaoBenDTO rvb =new RaVaoBenDTO();
+                            rvb.setMaVe(resultSet.getString(1));
+                            rvb.setTenViTri(resultSet.getString(2));
+                            rvb.setTenKhuVuc(resultSet.getString(3));
+                            rvb.setBienSoXe(resultSet.getString(4));
+                            rvb.setNgayVao(resultSet.getDate(5));
+                            rvb.setNgayRa(resultSet.getDate(6));
+                            rvb.setTrangThaiRvb(resultSet.getString(7));
+                            dsRaVaoBen.add(rvb);
                                                                
 			}      		                        
                                             }

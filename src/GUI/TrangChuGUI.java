@@ -266,13 +266,17 @@ public class TrangChuGUI {
             public void actionPerformed(ActionEvent e) {
                 pnMain.removeAll();
                 System.out.println("23123");
-                    BaoCaoBLL.getInstance().reloadRVB();
-                BaoCaoBLL.getInstance().reloadTien();
+//                    BaoCaoBLL.getInstance().reloadRVB();
+//                BaoCaoBLL.getInstance().reloadTien();
                 
+                QLHoaDonGUI QlHoaDon = QLHoaDonGUI.getInstance();
+                QlHoaDon.reloadResources();
                 DoanhThuGUI qlDoanhThu = DoanhThuGUI.getInstance();
                 pnMain.add(qlDoanhThu.getPnTongQuanQLDT());
-                pnMain.revalidate();
-                pnMain.repaint();
+                
+                pnTrangChu.revalidate();
+                pnTrangChu.validate();
+                pnTrangChu.repaint();
                 System.out.println("23123");
             }
         });

@@ -75,11 +75,11 @@ public class BaoCaoBLL {
 		dtm.addColumn("Tổng tiền");
 		
                try{  
-//                    ArrayList<RaVaoBenDTO> dsXe = RaVaoBenDAL.getInstance().reloadResources();
-//                    ArrayList<HoaDonDTO> dsTien = HoaDonDAL.getInstance().reloadResources();
+                    ArrayList<RaVaoBenDTO> dsXe = RaVaoBenDAL.getInstance().reloadResources();
+                    ArrayList<HoaDonDTO> dsTien = HoaDonDAL.getInstance().reloadResources();
                     
-                    ArrayList<RaVaoBenDTO> dsXe = reloadRVB();
-                    ArrayList<HoaDonDTO> dsTien = reloadTien();
+//                    ArrayList<RaVaoBenDTO> dsXe = reloadRVB();
+//                    ArrayList<HoaDonDTO> dsTien = reloadTien();
                     
 //                    Date dateStart = simpleDateFormat.parse(startDate);
 //                    Date dateEnd = simpleDateFormat.parse(endDate);
