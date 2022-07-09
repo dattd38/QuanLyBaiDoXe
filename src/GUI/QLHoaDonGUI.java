@@ -97,11 +97,12 @@ public static QLHoaDonGUI getInstance() {
 		lblTitle.setForeground(Color.RED);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                lblTitle.setForeground(new Color(161,0,53));
 		lblTitle.setBounds(350, 35, 350, 39);
 		pnTitle.add(lblTitle);
                 
                 JLabel lblThang = new JLabel();
-		lblThang.setForeground(Color.RED);
+		lblThang.setForeground(new Color(161,0,53));
 		lblThang.setHorizontalAlignment(SwingConstants.CENTER);
 		lblThang.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		lblThang.setBounds(550, 23, 239, 39);
@@ -138,15 +139,15 @@ public static QLHoaDonGUI getInstance() {
 //		lblAvgTien.setBounds(760, 380, 200, 50);
 //		pnDoanhThu.add(lblAvgTien);
                 
-                int TongTien=0;
-                
-                int count=tbHoaDon.getRowCount();
-                ArrayList<Integer> list= new ArrayList<Integer>();
-                for(int i=0;i<count;i++ )
-                {    
-                    list.add(Integer.parseInt(tbHoaDon.getValueAt(i, 5).toString()));
-                    TongTien+=TongTien+Integer.parseInt(tbHoaDon.getValueAt(i, 7).toString());
-                }
+//                int TongTien=0;
+//                
+//                int count=tbHoaDon.getRowCount();
+//                ArrayList<Integer> list= new ArrayList<Integer>();
+//                for(int i=0;i<count;i++ )
+//                {    
+//                    list.add(Integer.parseInt(tbHoaDon.getValueAt(i, 5).toString()));
+//                    TongTien+=TongTien+Integer.parseInt(tbHoaDon.getValueAt(i, 7).toString());
+//                }
                 
              
                     

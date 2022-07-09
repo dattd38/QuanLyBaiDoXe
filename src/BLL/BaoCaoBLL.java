@@ -26,7 +26,9 @@ import Controller.VeDAL;
 import GUI.*;
 import DTO.*;
 import java.text.DateFormat;
+import java.util.Collection;
 import java.util.Random;
+import org.apache.commons.collections4.iterators.EmptyListIterator;
 import org.apache.poi.ss.formula.functions.Column;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 
@@ -47,10 +49,22 @@ public class BaoCaoBLL {
 			instance = new BaoCaoBLL();
 		return instance;
 	}
+        
+        public ArrayList<RaVaoBenDTO> reloadRVB(){
+            ArrayList<RaVaoBenDTO> dsXe = RaVaoBenDAL.getInstance().getResources();
+            return dsXe;
+        }
+        
+        public ArrayList<HoaDonDTO> reloadTien(){
+            ArrayList<HoaDonDTO> dsTien = HoaDonDAL.getInstance().getResources();
+            return dsTien;
+        }
+        
 	@SuppressWarnings("deprecation")
 	public DefaultTableModel thongKe(String startDate,String endDate) {
                 DateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                Date currentDate = new Date();
+//                Date currentDate = new Date();
+                
                 Date date1 = null;
                 Date date2 = null;
                 
@@ -61,10 +75,14 @@ public class BaoCaoBLL {
 		dtm.addColumn("Tổng tiền");
 		
                try{  
-                    ArrayList<RaVaoBenDTO> dsXe = RaVaoBenDAL.getInstance().getResources();
-                    ArrayList<HoaDonDTO> dsTien = HoaDonDAL.getInstance().getResources();
-                    Date dateStart = simpleDateFormat.parse(startDate);
-                    Date dateEnd = simpleDateFormat.parse(endDate);
+//                    ArrayList<RaVaoBenDTO> dsXe = RaVaoBenDAL.getInstance().reloadResources();
+//                    ArrayList<HoaDonDTO> dsTien = HoaDonDAL.getInstance().reloadResources();
+                    
+                    ArrayList<RaVaoBenDTO> dsXe = reloadRVB();
+                    ArrayList<HoaDonDTO> dsTien = reloadTien();
+                    
+//                    Date dateStart = simpleDateFormat.parse(startDate);
+//                    Date dateEnd = simpleDateFormat.parse(endDate);
                     date1 = simpleDateFormat.parse(startDate);
                     date2 = simpleDateFormat.parse(endDate);
                     ArrayList<Date> dates = new ArrayList<Date>();
@@ -123,6 +141,7 @@ public class BaoCaoBLL {
                             dataRow.add(row);
                             dtm.addRow(row);
                                       }
+                    
                }
                
                catch(Exception ex) {
@@ -253,8 +272,10 @@ public class BaoCaoBLL {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                 
                 
-	try {
-			FileOutputStream out = new FileOutputStream(new File("BaoCao//Báo cáo mã số "+sdf.format(now)+" .docx"));
+	try {           
+                        Random random =new Random();
+                        int rand=random.nextInt(1000);
+			FileOutputStream out = new FileOutputStream(new File("BaoCao//Báo cáo MS-"+rand+", "+sdf.format(now)+" .docx"));
 			document.write(out);
 			out.close();
 			document.close();

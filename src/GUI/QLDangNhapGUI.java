@@ -57,10 +57,6 @@ public class QLDangNhapGUI {
 	}
 	
 	
-	/**
-	 * Create the application.
-	 * @wbp.parser.entryPoint
-	 */
 	public QLDangNhapGUI() {
 		initialize();
 	}
@@ -250,4 +246,10 @@ public class QLDangNhapGUI {
 		lblDangNhap.setFont(new Font("Times New Roman", Font.BOLD, 22));
 	}
 
+        public void  clearField() {
+        pfMatKhau.setText("");
+        tfTaiKhoan.setText("");
+
+        QLDangNhapGUI.getInstance().initialize();
+    }
 }

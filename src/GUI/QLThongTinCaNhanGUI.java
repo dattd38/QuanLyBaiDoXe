@@ -1,5 +1,6 @@
 package GUI;
 
+import BLL.DangNhapBLL;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -219,6 +220,8 @@ public class QLThongTinCaNhanGUI {
 		btnDangXuat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TrangChuGUI.getInstance().getFrmTrangChu().setVisible(false);
+                                QLThongTinCaNhanGUI.getInstance().loadResources();
+                                QLDangNhapGUI.getInstance().clearField();
 				QLDangNhapGUI.getInstance().getFrame().setVisible(true);
 			}
 		});

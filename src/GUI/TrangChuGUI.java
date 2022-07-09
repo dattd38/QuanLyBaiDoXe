@@ -1,13 +1,19 @@
 package GUI;
 
+import BLL.BaoCaoBLL;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import BLL.QLViTriBLL;
 import BLL.QLRaVaoBenBLL;
+import Controller.HoaDonDAL;
+import Controller.RaVaoBenDAL;
+import DTO.HoaDonDTO;
+import DTO.RaVaoBenDTO;
 import javax.swing.*;
 
 import com.toedter.calendar.JCalendar;
+import java.util.ArrayList;
 
 
 
@@ -26,6 +32,7 @@ public class TrangChuGUI {
 
     private TrangChuGUI() {
         initialize();
+        initittle();
     }
 
     public static TrangChuGUI getInstance() {
@@ -33,6 +40,10 @@ public class TrangChuGUI {
             instance = new TrangChuGUI();
         }
         return instance;
+    }
+    
+    public JPanel getInitittle(){
+        return pnTitle;
     }
 
     public JFrame getFrmTrangChu() {
@@ -78,6 +89,7 @@ public class TrangChuGUI {
 
     private void initialize() {
         //init the container
+        
         frmTrangChu = new JFrame("Quản lý bãi gửi xe");
         frmTrangChu.setBounds(10, 10, 1341, 720);
         frmTrangChu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -234,12 +246,11 @@ public class TrangChuGUI {
             public void actionPerformed(ActionEvent e) {
 
                pnMain.removeAll();
-               QLHoaDonGUI QlHoaDon = new QLHoaDonGUI().getInstance();
-               QlHoaDon.initialize();
+               QLHoaDonGUI QlHoaDon = QLHoaDonGUI.getInstance();
                QlHoaDon.reloadResources();
                pnMain.add(QlHoaDon.getPnMain());
-               frmTrangChu.revalidate();
-               frmTrangChu.repaint();
+               pnMain.revalidate();
+               pnMain.repaint();
             }
         });
 
@@ -254,10 +265,15 @@ public class TrangChuGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pnMain.removeAll();
+                System.out.println("23123");
+                    BaoCaoBLL.getInstance().reloadRVB();
+                BaoCaoBLL.getInstance().reloadTien();
+                
                 DoanhThuGUI qlDoanhThu = DoanhThuGUI.getInstance();
                 pnMain.add(qlDoanhThu.getPnTongQuanQLDT());
                 pnMain.revalidate();
                 pnMain.repaint();
+                System.out.println("23123");
             }
         });
     }

@@ -241,7 +241,7 @@ public class QLNhanVienGUI {
                 tfSoDienThoai.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(tfSoDienThoai);
                 
-           JButton btnBack = new JButton(new ImageIcon("icon//logout.png"));
+                JButton btnBack = new JButton(new ImageIcon("icon//logout.png"));
                 btnBack.setBounds(900, 30, 120, 40);
                 btnBack.setText("Back");
                 btnBack.setForeground(new Color(161,0,53));

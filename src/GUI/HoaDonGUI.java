@@ -28,7 +28,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import BLL.QLVeBLL;
+//import BLL.QLVeBLL;
 import BLL.QLViTriBLL;
 import BLL.ThongTinCaNhanBLL;
 import Controller.HoaDonDAL;
@@ -43,6 +43,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -322,12 +325,29 @@ public class HoaDonGUI {
                         );
                         String result = HoaDonBLL.getInstance().addProcessing(hd);
                         lblMessage.setText(result);
-                        QLRaVaoBenBLL.getInstance().SoXe();
+                        clearField();                   
                         TrangChuGUI.getInstance().initittle();
-                        clearField();
-
                     }
                 });
                 pnHoaDon.add(btnLap);
+                
+                JButton btnTroVe = new JButton("Trở về");
+		btnTroVe.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+				
+                        pnMainHoaDon.removeAll();
+                        QLRaVaoBenGUI qlRaVaoBen = QLRaVaoBenGUI.getInstance();
+                        qlRaVaoBen.initialize();
+                        qlRaVaoBen.reloadResources();
+                        pnMainHoaDon.add(qlRaVaoBen.getPnMain());
+                        pnMainHoaDon.revalidate();
+                        pnMainHoaDon.repaint();
+			}
+		});
+		btnTroVe.setIcon(new ImageIcon("icon\\logout.png"));
+		btnTroVe.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnTroVe.setBounds(867, 400, 168, 41);
+                btnTroVe.setForeground(new Color(161,0,53));
+		pnHoaDon.add(btnTroVe);
         }
 }

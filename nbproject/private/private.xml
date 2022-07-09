@@ -12,8 +12,18 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/QuanLyBaiDoXe/src/BLL/QLNhanVienBLL.java</file>
-            <file>file:/D:/QuanLyBaiDoXe/src/GUI/QuanTriHeThongGUI.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/Controller/HoaDonDAL.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/DTO/DoanhThuDTO.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/BLL/QLDoanhThuBLL.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/BLL/HoaDonBLL.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/BLL/QLViTriBLL.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/Controller/DoanhThuDAL.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/GUI/QLHoaDonGUI.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/GUI/TrangChuGUI.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/GUI/DoanhThuGUI.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/Controller/RaVaoBenDAL.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/BLL/BaoCaoBLL.java</file>
+            <file>file:/D:/QuanLyBaiDoXe/src/GUI/QLVeThangGUI.java</file>
         </group>
     </open-files>
 </project-private>

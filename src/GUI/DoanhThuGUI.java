@@ -32,8 +32,12 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Button;
 import java.awt.Label;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.table.TableModel;
 public class DoanhThuGUI {
 static DoanhThuGUI instance = null;
 private JPanel pnMain;
@@ -54,32 +58,30 @@ RaVaoBenDTO rvb;
  
                 private DoanhThuGUI(){
 			initialize();
-			loadResources();
-                       
+//                        loadResources();
+                
 		}
-                      
-                public void reloadResources() {
-           
-	        }       
-             
-		private void loadResources() {
-			
-		}
-		
-		private void refreshDataTable() {
-			
-		}
+                private void loadResources(){
+                    tbDoanhThu.setModel(QLDoanhThuBLL.getInstance().getResources());
+                }
 		
 		public static DoanhThuGUI getInstance() {
 			if(instance == null)
 				instance = new DoanhThuGUI();
 			return instance;
 		}
-		
+
 		public JPanel getPnTongQuanQLDT() {
 			return pnMain;
 		}
                 int count=0;
+                
+                public void reloadResources() {
+		DefaultTableModel dm = (DefaultTableModel) tbDoanhThu.getModel();
+		dm.getDataVector().removeAllElements();
+		dm.fireTableDataChanged();
+		tbDoanhThu.setModel(QLDoanhThuBLL.getInstance().reloadResources());
+	}
   
     @SuppressWarnings("deprecation")
     private void initialize() {
@@ -132,6 +134,11 @@ RaVaoBenDTO rvb;
 		tfTuNgay.setBounds(90, 70, 120, 28);
 		tfTuNgay.setFont(new Font("Times New Roman", Font.BOLD, 16));
                 tfTuNgay.setDateFormatString("dd-MM-yyyy");
+                ZoneId zoneId=ZoneId.systemDefault();
+                YearMonth now=YearMonth.now(zoneId);
+                LocalDate ngayDau=now.atDay(1);
+                Date date=Date.from(ngayDau.atStartOfDay(zoneId).toInstant());
+                tfTuNgay.setDate(date);
                 tfTuNgay.setForeground(new Color(161,0,53));
 		pnTitle.add(tfTuNgay);
                 
@@ -147,8 +154,26 @@ RaVaoBenDTO rvb;
 		tfDenNgay.setBounds(300, 70, 120, 28);
 		tfDenNgay.setFont(new Font("Times New Roman", Font.BOLD, 16));
                 tfDenNgay.setDateFormatString("dd-MM-yyyy");
+                Calendar cal=Calendar.getInstance();
+                java.util.Date denNgay=cal.getTime();
+                tfDenNgay.setDate(denNgay);
                 tfDenNgay.setForeground(new Color(161,0,53));
 		pnTitle.add(tfDenNgay);
+                
+//z                tbDoanhThu = new JTable();
+//		tbDoanhThu.setBounds(0, 0, 1050, 350);
+//		JScrollPane sc = new JScrollPane(tbDoanhThu, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+//		sc.setBounds(0, 0, 1055,350);
+//		tbDoanhThu.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//			
+//			@Override
+//			public void valueChanged(ListSelectionEvent arg0) {
+//				
+//			}
+//			
+//		});
+//		pnDoanhThu.add(sc,BorderLayout.CENTER);
+                
                 
                 btnThongKe = new Button(" Thống Kê ");
                 btnThongKe.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -242,7 +267,7 @@ RaVaoBenDTO rvb;
                 btnLap.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                    BaoCaoBLL.getInstance().lapBaoCao();
+                    QLDoanhThuBLL.getInstance().lapBaoCao();
                 
                     }
                 });
@@ -271,6 +296,7 @@ RaVaoBenDTO rvb;
                 lblTongTien.setVisible(false);
                 
     }
+    
     public int sumIntTXV()
     {
         int count1=tbDoanhThu.getRowCount();

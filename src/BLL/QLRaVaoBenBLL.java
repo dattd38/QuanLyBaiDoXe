@@ -1,10 +1,7 @@
 package BLL;
 
-import Controller.NhanVienDAL;
 import Controller.RaVaoBenDAL;
 import Controller.VeDAL;
-import DTO.NhanVienDTO;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -33,7 +30,7 @@ public class QLRaVaoBenBLL {
             throw new MyNullException("Mã vé đang bị trống");
         }
 
-        if (rvb.getTenViTri().equals("(Chọn vị trí)"))
+        if (rvb.getTenViTri().equals("Chọn Vị Trí"))
         {
             throw new MyNullException("Chưa chọn vị trí");
         }
@@ -43,9 +40,11 @@ public class QLRaVaoBenBLL {
         }
         return true;
     }
-
+    
+    
     public String addProcessing(RaVaoBenDTO rvb) {
         try{    
+            checkData(rvb);
             ArrayList<VeDTO> dsVe = VeDAL.getInstance().reloadResources();
             for(VeDTO item: dsVe) {
                 if(item.getMaVe().equals(rvb.getMaVe())){
@@ -53,8 +52,8 @@ public class QLRaVaoBenBLL {
                         return "Vé đã được sử dụng";
                     }
                 }	
-            }
-
+            }       
+            
             ArrayList<RaVaoBenDTO> bienSoXe = RaVaoBenDAL.getInstance().reloadResources();
             for(RaVaoBenDTO bsx: bienSoXe) {
                 if(bsx.getTrangThaiRvb().equals("ĐÃ LẤY"))
@@ -64,7 +63,6 @@ public class QLRaVaoBenBLL {
                     }	
             }
             String msg;
-            checkData(rvb);
             int result = RaVaoBenDAL.getInstance().addRaVaoBen(rvb);
             switch(result)
             {
@@ -74,8 +72,7 @@ public class QLRaVaoBenBLL {
                     msg = "Thêm không thành công! Vui lòng thử lại";
                     break;
                 default:
-                    msg = "Xe Vào Thành Công ";
-                    break;
+                    msg = "Xe Vào Thành Công";
             }
                 return msg;
         }
@@ -100,7 +97,12 @@ public class QLRaVaoBenBLL {
                         if(raVaoBenDTO.getTrangThaiRvb().equals("ĐÃ LẤY")) {
                                 continue;
                             }
-                            Object[] row = { raVaoBenDTO.getMaVe(), raVaoBenDTO.getTenViTri(), raVaoBenDTO.getTenKhuVuc(), raVaoBenDTO.getBienSoXe(), raVaoBenDTO.getNgayVao()};
+                            Object[] row = { 
+                                raVaoBenDTO.getMaVe(), 
+                                raVaoBenDTO.getTenViTri(), 
+                                raVaoBenDTO.getTenKhuVuc(), 
+                                raVaoBenDTO.getBienSoXe(), 
+                                raVaoBenDTO.getNgayVao()};
                             dtm.addRow(row);
                     }
 
@@ -117,6 +119,7 @@ public class QLRaVaoBenBLL {
     public TableModel reloadResources() {
             ArrayList<RaVaoBenDTO> dsRaVaoBen = new ArrayList<RaVaoBenDTO>();
             dsRaVaoBen=RaVaoBenDAL.getInstance().reloadResources();
+            
             DefaultTableModel dtm = new DefaultTableModel();
             try {
                     dtm.addColumn("Mã Vé");
@@ -129,7 +132,12 @@ public class QLRaVaoBenBLL {
                         if(raVaoBenDTO.getTrangThaiRvb().equals("ĐÃ LẤY")) {
                                     continue;
                             }
-                            Object[] row = { raVaoBenDTO.getMaVe(), raVaoBenDTO.getTenViTri(), raVaoBenDTO.getTenKhuVuc(), raVaoBenDTO.getBienSoXe(), raVaoBenDTO.getNgayVao()};
+                            Object[] row = { 
+                                raVaoBenDTO.getMaVe(), 
+                                raVaoBenDTO.getTenViTri(), 
+                                raVaoBenDTO.getTenKhuVuc(), 
+                                raVaoBenDTO.getBienSoXe(), 
+                                raVaoBenDTO.getNgayVao()};
                             dtm.addRow(row);
                     }
 
@@ -142,23 +150,21 @@ public class QLRaVaoBenBLL {
             }
             return dtm;
     }
-    public int SoXe()
-    {
+    public int SoXe(){
         ArrayList<RaVaoBenDTO> dsRaVaoBen = new ArrayList<RaVaoBenDTO>();
-            dsRaVaoBen=RaVaoBenDAL.getInstance().reloadResources();
-            DefaultTableModel dtm = new DefaultTableModel();
-                    int soXe=0;
-                    int i = 0;
-                    for (RaVaoBenDTO raVaoBenDTO : dsRaVaoBen) {
-                        if(raVaoBenDTO.getTrangThaiRvb().equals("ĐANG GỬI")) 
-                                         soXe++;
-
+        dsRaVaoBen=RaVaoBenDAL.getInstance().reloadResources();
+        DefaultTableModel dtm = new DefaultTableModel();
+        int soXe=0;
+        for (RaVaoBenDTO raVaoBenDTO : dsRaVaoBen) {
+            if(raVaoBenDTO.getTrangThaiRvb().equals("ĐANG GỬI")){
+                             soXe++;               
+            }
+        }
+        return soXe;
     }
-   return soXe;
-}
     public TableModel timKiem(String key) {
             ArrayList<RaVaoBenDTO> dsRaVaoBen = new ArrayList<RaVaoBenDTO>();
-            dsRaVaoBen=RaVaoBenDAL.getInstance().getResources();
+            dsRaVaoBen=RaVaoBenDAL.getInstance().reloadResources();
             DefaultTableModel dtm = new DefaultTableModel();
                     dtm.addColumn("Mã Vé");
                     dtm.addColumn("Tên Vị Trí");

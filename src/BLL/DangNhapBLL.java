@@ -2,6 +2,7 @@ package BLL;
 
 import Controller.NhanVienDAL;
 import DTO.NhanVienDTO;
+import GUI.QLThongTinCaNhanGUI;
 import java.util.ArrayList;
 
 import GUI.QuanTriHeThongGUI;
@@ -45,16 +46,19 @@ public class DangNhapBLL {
 					if(nv.getLoaiTaiKhoan().equals("1")) {
 						ThongTinCaNhanBLL.getInstance().setNhanVien(nv);
 						TrangChuGUI trangchu=TrangChuGUI.getInstance();
+                                                ThongTinCaNhanBLL.getInstance().LoadResources();
 						trangchu.getFrmTrangChu().setVisible(true);
+                                                
 					}
                                         else if(nv.getLoaiTaiKhoan().equals("2")) {
 						QuanTriHeThongGUI.getInstance().getFrmMain().setVisible(true);
                                                 ThongTinCaNhanBLL.getInstance().setNhanVien(nv);
+                                               ThongTinCaNhanBLL.getInstance().LoadResources();
 					}
                                         else if(nv.getLoaiTaiKhoan().equals("3")) {
 						QuanTriHeThongGUI.getInstance().getFrmMain().setVisible(true);
-                                                ThongTinCaNhanBLL.getInstance().setNhanVien(nv);
-                                               
+                                                ThongTinCaNhanBLL.getInstance().setNhanVien(nv); 
+                                                ThongTinCaNhanBLL.getInstance().LoadResources();
                                         }
                                                 
 					return true;

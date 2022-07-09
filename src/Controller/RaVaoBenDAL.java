@@ -94,21 +94,19 @@ public class RaVaoBenDAL {
 	}
        public int  addRaVaoBen(RaVaoBenDTO rvb) 
         {
+                
             String query = "insert into RAVAOBEN VALUES ('"+rvb.getMaVe()+"','"+rvb.getTenViTri()+"','"+rvb.getTenKhuVuc()+"','"+rvb.getBienSoXe()
                     +"','"+rvb.getNgayVao()+"',NULL,N'ĐANG GỬI')"
                     + "update VITRI set TRANGTHAI =N'ĐẦY' WHERE TENVITRI= '"+rvb.getTenViTri()+"'"
                     + "update VE set TINHTRANGVE=N'ĐANG SỬ DỤNG' WHERE MAVE='"+rvb.getMaVe()+"'";
-            
-            
-            
             int result = DAL.getInstance().executeQueryUpdate(query);
             if(result > 0) {
                 rvb.setTrangThaiRvb("ĐANG GỬI");
                 dsRaVaoBen.add(rvb);
             }
-            
                 return result;
 	}
+       
 
 	public String getThongTin(String maVe) {
 		for (RaVaoBenDTO rvb: dsRaVaoBen) {
@@ -122,4 +120,4 @@ public class RaVaoBenDAL {
 
 
 
-
+ 

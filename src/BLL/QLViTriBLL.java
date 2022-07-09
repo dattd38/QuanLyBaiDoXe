@@ -76,18 +76,18 @@ public class QLViTriBLL {
 		}
 		return dtm;
 	}
+    
     public int isCount(){ 
         ArrayList<ViTriDTO> dsViTri = new ArrayList<ViTriDTO>();
-        dsViTri=ViTriDAL.getInstance().reloadResources();
+        dsViTri = ViTriDAL.getInstance().reloadResources();
         DefaultTableModel dtm = new DefaultTableModel();
         int soChoTrong=0;
         for (ViTriDTO vt : dsViTri) {
-            if( vt.getTrangThaiViTri().equals("ĐẦY")) {
+            if( vt.getTrangThaiViTri().equals("ĐẦY"))
                 continue;
-            }
-            soChoTrong++;   
+            else soChoTrong++;   
         }
-                return soChoTrong;
+        return soChoTrong;
     }
 }
 
