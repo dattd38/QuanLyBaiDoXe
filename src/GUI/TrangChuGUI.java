@@ -1,19 +1,13 @@
 package GUI;
 
-import BLL.BaoCaoBLL;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import BLL.QLViTriBLL;
 import BLL.QLRaVaoBenBLL;
-import Controller.HoaDonDAL;
-import Controller.RaVaoBenDAL;
-import DTO.HoaDonDTO;
-import DTO.RaVaoBenDTO;
 import javax.swing.*;
 
 import com.toedter.calendar.JCalendar;
-import java.util.ArrayList;
 
 
 
@@ -56,7 +50,7 @@ public class TrangChuGUI {
         pnTitle.setBackground(new Color(237,223,179));
         pnTitle.setLayout(null);
 
-        JLabel lblSoChoTrong= new JLabel("Số Chỗ Trống: ");
+        JLabel lblSoChoTrong = new JLabel("Số Chỗ Trống: ");
         lblSoChoTrong.setBounds(150, 10, 300, 118);
         lblSoChoTrong.setFont(new Font("Times New Roman", Font.BOLD, 25));
         lblSoChoTrong.setForeground(new Color(161,0,53));
@@ -87,7 +81,7 @@ public class TrangChuGUI {
         pnTitle.add(lTSoXe);
     }
 
-    private void initialize() {
+    public void initialize() {
         //init the container
         
         frmTrangChu = new JFrame("Quản lý bãi gửi xe");
@@ -247,6 +241,7 @@ public class TrangChuGUI {
 
                pnMain.removeAll();
                QLHoaDonGUI QlHoaDon = QLHoaDonGUI.getInstance();
+               QlHoaDon.initialize();
                QlHoaDon.reloadResources();
                pnMain.add(QlHoaDon.getPnMain());
                pnMain.revalidate();
@@ -265,19 +260,13 @@ public class TrangChuGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pnMain.removeAll();
-                System.out.println("23123");
-//                    BaoCaoBLL.getInstance().reloadRVB();
-//                BaoCaoBLL.getInstance().reloadTien();
-                
-                QLHoaDonGUI QlHoaDon = QLHoaDonGUI.getInstance();
-                QlHoaDon.reloadResources();
                 DoanhThuGUI qlDoanhThu = DoanhThuGUI.getInstance();
+                qlDoanhThu.initialize();
+                qlDoanhThu.reloadResources();
                 pnMain.add(qlDoanhThu.getPnTongQuanQLDT());
+                pnMain.revalidate();
+                pnMain.repaint();
                 
-                pnTrangChu.revalidate();
-                pnTrangChu.validate();
-                pnTrangChu.repaint();
-                System.out.println("23123");
             }
         });
     }

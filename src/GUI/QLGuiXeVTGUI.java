@@ -278,16 +278,24 @@ public class QLGuiXeVTGUI {
             ArrayList<VeDTO> dsVeThang = new ArrayList<VeDTO>();
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(lTMaVe.getText().length()==0){
-                    JOptionPane.showMessageDialog(null, "Bạn chưa nhập từ khóa cần tìm!","Thông báo",1);
+                try{
+                        if(lTMaVe.getText().length()==0){
+                        JOptionPane.showMessageDialog(null, "Bạn chưa nhập từ khóa cần tìm!","Thông báo",1);
+                    }
+                    else if(VeDAL.getInstance().getBsx(lTMaVe.getText())==null){
+                        JOptionPane.showMessageDialog(null, "Thông tin vé tháng không có !","Thông báo",1);
+                        clearField();
+                    }
+                    else if(VeDAL.getInstance().getNHH(lTMaVe.getText()).compareTo(date) < 0){
+                        JOptionPane.showMessageDialog(null, "Vé của bạn đã hết hạn !","Thông báo",1);
+                        VeDAL.getInstance().removeVeHetHan(lTMaVe.getText());
+                        clearField();
+                    }
+                    tfBienSoXe.setText(VeDAL.getInstance().getBsx(lTMaVe.getText()));
+                    tfNgayHetHan.setText(fm.format(VeDAL.getInstance().getNHH(lTMaVe.getText())));
+                }catch(Exception ex){
                 }
-                else if(VeDAL.getInstance().getBsx(lTMaVe.getText())==null){
-                    JOptionPane.showMessageDialog(null, "Thông tin vé tháng không có !","Thông báo",1);
-                    clearField();
-                }
-                else
-                tfBienSoXe.setText(VeDAL.getInstance().getBsx(lTMaVe.getText()));
-                tfNgayHetHan.setText(fm.format(VeDAL.getInstance().getNHH(lTMaVe.getText())));
+                
             }
             
         });

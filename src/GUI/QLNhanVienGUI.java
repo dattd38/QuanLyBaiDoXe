@@ -22,7 +22,6 @@ import DTO.NhanVienDTO;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JPasswordField;
 import java.sql.Date;

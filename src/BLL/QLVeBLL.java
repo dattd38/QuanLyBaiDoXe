@@ -1,15 +1,14 @@
 package BLL;
 
-import Controller.NhanVienDAL;
 import Controller.VeDAL;
-import DTO.NhanVienDTO;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 
 import DTO.VeDTO;
-import MyException.ContainException;
 import MyException.MyNullException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.table.TableModel;
 
 public class QLVeBLL {
@@ -32,21 +31,29 @@ public class QLVeBLL {
 		{
 			throw new MyNullException("Biển số xe đang bị trống");
 		}
+                if(ve.getNgayBatDau().equals("")){
+                    throw new MyNullException("Ngày đăng ký trống ");
+                }
 		return true;
 	}
         
         public String changeProcessing(VeDTO ve) {
 		String msg;
 		ArrayList<VeDTO> dsVe = VeDAL.getInstance().getResources();
-		boolean check = false;
-		for (VeDTO item: dsVe) {
-			if (ve.getMaVe().equals(item.getMaVe())) {
-                            return "Mã vé đã tồn tại";
+                
 
-			}
-		}
 		try {
 			checkData(ve);
+                        for(VeDTO item:dsVe){
+                            if(item.getMaVe().equals(ve.getMaVe())){
+                                continue;
+                            }
+                            if(item.getNgayBatDau()!=null){
+                                if(item.getBienSoXe().equals(ve.getBienSoXe())){
+                                    return "Biển số xe đã được đăng ký vé tháng";
+                                }
+                            }
+                        }
 			int result = VeDAL.getInstance().changeProcessing1(ve);
 			switch(result)
 			{
@@ -64,7 +71,38 @@ public class QLVeBLL {
 		}
 	}
 
+                public String changeProcessingDK(VeDTO ve) {
+		String msg;
+		ArrayList<VeDTO> dsVe = VeDAL.getInstance().getResources();
 
+
+			
+		try {
+                        checkData(ve);
+                        for(VeDTO item:dsVe){
+                            if(item.getNgayBatDau()!=null){
+                                if(item.getBienSoXe().equals(ve.getBienSoXe())){
+                                    return "Biển số xe đã được đăng ký vé tháng";
+                                }
+                            }
+                        }
+			int result = VeDAL.getInstance().changeProcessing1DK(ve);
+			switch(result)
+			{
+			case -1:
+			case 0:
+				msg = "Đăng ký không thành công! Vui lòng thử lại";
+				break;
+				default:
+					msg = "Đăng ký thành công";
+			}
+			return msg;
+		}
+		catch(MyNullException e) {
+			return e.toString();
+		}
+	}
+                
 	public DefaultTableModel getResources() {
 		
 		ArrayList<VeDTO> dsVe = new ArrayList<VeDTO>();
@@ -134,4 +172,22 @@ public class QLVeBLL {
 		}
 		return dtm;
 	}
+        
+    public void checkVe(){
+        SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
+        Calendar   cal = Calendar.getInstance();
+        java.util.Date date = cal.getTime();
+        String ngayvao = fm.format(date);
+        ArrayList<VeDTO> dsVe= new ArrayList<>();
+        dsVe=VeDAL.getInstance().reloadResources();
+        
+        for(VeDTO ve:dsVe){
+            if(ve.getNgayKetThuc()==null){
+//                continue;
+            }
+            else if(ve.getNgayKetThuc().compareTo(date)<0){
+                VeDAL.getInstance().removeVeHetHan(ve.getMaVe());
+            }
+        }
+    }
 }

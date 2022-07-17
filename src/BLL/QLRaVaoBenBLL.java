@@ -153,26 +153,17 @@ public class QLRaVaoBenBLL {
             }
             return dtm;
     }
-    public int SoXe() throws SQLException{
-        int soxe = 0;
-        String query= new String("SELECT COUNT(TRANGTHAI) FROM dbo.RAVAOBEN WHERE TRANGTHAI=N'ĐANG GỬI'");
-        ResultSet result = DAL.getInstance().executeQueryToGetData(query); 
-                
-        if(result.next()){
-            soxe = result.getInt(1);
+    public int SoXe(){
+        ArrayList<RaVaoBenDTO> dsRaVaoBen = new ArrayList<RaVaoBenDTO>();
+        dsRaVaoBen=RaVaoBenDAL.getInstance().reloadResources();
+        DefaultTableModel dtm = new DefaultTableModel();
+        int soXe=0;
+        for (RaVaoBenDTO raVaoBenDTO : dsRaVaoBen) {
+            if(raVaoBenDTO.getTrangThaiRvb().equals("ĐANG GỬI")){
+                             soXe++;               
+            }
         }
-        
-        return soxe;
-//        ArrayList<RaVaoBenDTO> dsRaVaoBen = new ArrayList<RaVaoBenDTO>();
-//        dsRaVaoBen=RaVaoBenDAL.getInstance().reloadResources();
-//        DefaultTableModel dtm = new DefaultTableModel();
-//        int soXe=0;
-//        for (RaVaoBenDTO raVaoBenDTO : dsRaVaoBen) {
-//            if(raVaoBenDTO.getTrangThaiRvb().equals("ĐANG GỬI")){
-//                             soXe++;               
-//            }
-//        }
-//        return soXe;
+        return soXe;
     }
     public TableModel timKiem(String key) {
             ArrayList<RaVaoBenDTO> dsRaVaoBen = new ArrayList<RaVaoBenDTO>();

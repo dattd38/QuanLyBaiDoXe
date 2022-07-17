@@ -1,6 +1,8 @@
 package GUI;
 
+import BLL.QLVeBLL;
 import BLL.ThongTinCaNhanBLL;
+import Controller.VeDAL;
 import DTO.NhanVienDTO;
 import GUI.QuanTriHeThongGUI;
 import java.awt.Button;
@@ -88,6 +90,8 @@ public class QuanTriHeThongGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMain.setVisible(false);
+                TrangChuGUI.getInstance().initittle();
+                TrangChuGUI.getInstance().initialize();
                 TrangChuGUI.getInstance().getFrmTrangChu().setVisible(true);
             }
         });
@@ -122,9 +126,10 @@ public class QuanTriHeThongGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frmMain.setVisible(false);
-                                QLVeThangGUI.getInstances().reloadResources();
-                                QLVeThangGUI.getInstances().getFormVe().setVisible(true);
+                            frmMain.setVisible(false);
+                            QLVeBLL.getInstance().checkVe();
+                            QLVeThangGUI.getInstances().reloadResources();
+                            QLVeThangGUI.getInstances().getFormVe().setVisible(true);
                                 
                                 			}
 		});
@@ -133,7 +138,7 @@ public class QuanTriHeThongGUI {
 		frmMain.repaint();
 		frmMain.invalidate();
 
-        btnQuanlyDoanhThu=new JButton("QUẢN LÝ DOANH THU");
+        btnQuanlyDoanhThu=new JButton("QUẢN LÝ HỎNG HÓC");
         btnQuanlyDoanhThu.setFont(new Font("Times New Roman", Font.BOLD, 17));
         btnQuanlyDoanhThu.setIcon(new ImageIcon("icon//System.png"));
         btnQuanlyDoanhThu.setBounds(650, 300, 300, 50);
@@ -142,7 +147,8 @@ public class QuanTriHeThongGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMain.setVisible(false);
-                QLDoanhThuGUI.getInstance().getPnMain().setVisible(true);
+                HongHocGUI.getInstance().reloadResources();
+                HongHocGUI.getInstance().getFormHH().setVisible(true);
             }
         });
         pnMenu.add(btnQuanlyDoanhThu);

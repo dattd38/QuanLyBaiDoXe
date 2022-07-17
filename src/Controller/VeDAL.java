@@ -97,7 +97,7 @@ public class VeDAL {
                 return ve.getBienSoXe();
             }
         }
-        return "";
+        return null;
     }
 
     public String DtoS(Date date){
@@ -117,28 +117,46 @@ public class VeDAL {
     }
             
     public void removeVeHetHan(String maVe){
-        String query = "UPDATE dbo.VE SET BIENSOXE=NULL,NGAYBATDAU=NULL,NGAYKETTHUC=NULL WHERE MAVE='"+maVe+"'";
+        String query = "UPDATE dbo.VE SET BIENSOXE=NULL,NGAYBATDAU=NULL WHERE MAVE='"+maVe+"'";
         DAL.getInstance().executeQueryUpdate(query);
     }
     
     public int changeProcessing1(VeDTO ve) {
 		int result;
-		String query = "UPDATE dbo.VE SET" 
-		+" MAVE=N'"  + ve.getMaVe()
-		+"', BIENSOXE='" + ve.getBienSoXe()
-		+"', NGAYBATDAU='" + ve.getNgayBatDau()+"'";
+		String query = "UPDATE dbo.VE SET BIENSOXE='" + ve.getBienSoXe()
+		+"', NGAYBATDAU='" + ve.getNgayBatDau()+"' WHERE MAVE='"+ve.getMaVe()+"'";
 		//System.out.println("Query = "+ query);
 		result = DAL.getInstance().executeQueryUpdate(query);
 		
-//		if (result > 0)
-//			for (int i = 0; i<dsve.size(); i++) {
-//				VeDTO e = dsve.get(i);
-//				if (e.getMaVe().equals(ve.getMaVe()))
-//				{
-//					dsve.set(i, ve);
-//					break;
-//				}
-//			}
+		if (result > 0)
+			for (int i = 0; i<dsve.size(); i++) {
+				VeDTO e = dsve.get(i);
+				if (e.getMaVe().equals(ve.getMaVe()))
+				{
+					dsve.set(i, ve);
+					break;
+				}
+			}
+		return result;
+	}
+    
+        public int changeProcessing1DK(VeDTO ve) {
+		int result;
+		String query = "UPDATE dbo.VE SET BIENSOXE='" + ve.getBienSoXe()
+		+"', NGAYBATDAU='" + ve.getNgayBatDau()+"' WHERE MAVE='"+ve.getMaVe()+"'"
+                +"UPDATE dbo.DOANHTHU SET SOVETHANG=SOVETHANG+1,TONGTIEN=TONGTIEN+1000000 WHERE NGAY='"+ve.getNgayBatDau()+"'";
+		//System.out.println("Query = "+ query);
+		result = DAL.getInstance().executeQueryUpdate(query);
+		
+		if (result > 0)
+			for (int i = 0; i<dsve.size(); i++) {
+				VeDTO e = dsve.get(i);
+				if (e.getMaVe().equals(ve.getMaVe()))
+				{
+					dsve.set(i, ve);
+					break;
+				}
+			}
 		return result;
 	}
 }

@@ -36,7 +36,8 @@ public class DoanhThuDAL {
                 dt.setNgay(resultSet.getDate(1));
                 dt.setSoXeVao(resultSet.getInt(2));
                 dt.setSoXeRa(resultSet.getInt(3));
-                dt.setTongTien(resultSet.getDouble(4));
+                dt.setSoVeThang(resultSet.getInt(4));
+                dt.setTongTien(resultSet.getInt(5));
                 dsDoanhThu.add(dt);
             }
         } catch (Exception e) {
@@ -58,7 +59,8 @@ public class DoanhThuDAL {
                 dt.setNgay(resultSet.getDate(1));
                 dt.setSoXeVao(resultSet.getInt(2));
                 dt.setSoXeRa(resultSet.getInt(3));
-                dt.setTongTien(resultSet.getDouble(4));
+                dt.setSoVeThang(resultSet.getInt(4));
+                dt.setTongTien(resultSet.getInt(5));
                 dsDoanhThu.add(dt);
             }
         } catch (Exception e) {

@@ -23,7 +23,7 @@ public class RaVaoBenDAL {
 	private static RaVaoBenDAL instance;
 	private ArrayList<RaVaoBenDTO> dsRaVaoBen;
 	public RaVaoBenDAL() {
-		dsRaVaoBen=new ArrayList<RaVaoBenDTO>();
+		dsRaVaoBen=new ArrayList<>();
 		loadResources();
 	}
 	
@@ -65,6 +65,7 @@ public class RaVaoBenDAL {
 	
 	
 	public ArrayList<RaVaoBenDTO> getResources(){
+            reloadResources();
 		return  dsRaVaoBen;
 	}
         public ArrayList<RaVaoBenDTO> reloadResources(){
@@ -98,7 +99,10 @@ public class RaVaoBenDAL {
             String query = "insert into RAVAOBEN VALUES ('"+rvb.getMaVe()+"','"+rvb.getTenViTri()+"','"+rvb.getTenKhuVuc()+"','"+rvb.getBienSoXe()
                     +"','"+rvb.getNgayVao()+"',NULL,N'ĐANG GỬI')"
                     + "update VITRI set TRANGTHAI =N'ĐẦY' WHERE TENVITRI= '"+rvb.getTenViTri()+"'"
-                    + "update VE set TINHTRANGVE=N'ĐANG SỬ DỤNG' WHERE MAVE='"+rvb.getMaVe()+"'";
+                    + "update VE set TINHTRANGVE=N'ĐANG SỬ DỤNG' WHERE MAVE='"+rvb.getMaVe()+"'"
+                    + "UPDATE dbo.DOANHTHU SET SOXEVAO=SOXEVAO+1 WHERE NGAY='"+rvb.getNgayVao()+"'";
+            
+            
             int result = DAL.getInstance().executeQueryUpdate(query);
             if(result > 0) {
                 rvb.setTrangThaiRvb("ĐANG GỬI");

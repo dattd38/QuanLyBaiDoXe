@@ -38,6 +38,15 @@ public class HoaDonDTO {
         this.thanhTien = thanhTien;
         this.ngayLap = ngayLap;
     }
+    
+    public HoaDonDTO(String maHoaDon,String maVe,String bienSoXe,String thanhTien,Date ngayLap){
+        super();
+        this.maHoaDon=maHoaDon;
+        this.maVe=maVe;
+        this.bienSoXe=bienSoXe;
+        this.thanhTien=thanhTien;
+        this.ngayLap=ngayLap;
+    }
 
     public String getMaHoaDon() {
         return maHoaDon;
