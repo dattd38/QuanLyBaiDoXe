@@ -26,6 +26,7 @@ public class TrangChuGUI {
 
     private TrangChuGUI() {
         initialize();
+        initittle();
     }
 
     public static TrangChuGUI getInstance() {
@@ -33,6 +34,10 @@ public class TrangChuGUI {
             instance = new TrangChuGUI();
         }
         return instance;
+    }
+    
+    public JPanel getInitittle(){
+        return pnTitle;
     }
 
     public JFrame getFrmTrangChu() {
@@ -45,7 +50,7 @@ public class TrangChuGUI {
         pnTitle.setBackground(new Color(237,223,179));
         pnTitle.setLayout(null);
 
-        JLabel lblSoChoTrong= new JLabel("Số Chỗ Trống: ");
+        JLabel lblSoChoTrong = new JLabel("Số Chỗ Trống: ");
         lblSoChoTrong.setBounds(150, 10, 300, 118);
         lblSoChoTrong.setFont(new Font("Times New Roman", Font.BOLD, 25));
         lblSoChoTrong.setForeground(new Color(161,0,53));
@@ -76,8 +81,9 @@ public class TrangChuGUI {
         pnTitle.add(lTSoXe);
     }
 
-    private void initialize() {
+    public void initialize() {
         //init the container
+        
         frmTrangChu = new JFrame("Quản lý bãi gửi xe");
         frmTrangChu.setBounds(10, 10, 1341, 720);
         frmTrangChu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -234,12 +240,12 @@ public class TrangChuGUI {
             public void actionPerformed(ActionEvent e) {
 
                pnMain.removeAll();
-               QLHoaDonGUI QlHoaDon = new QLHoaDonGUI().getInstance();
+               QLHoaDonGUI QlHoaDon = QLHoaDonGUI.getInstance();
                QlHoaDon.initialize();
                QlHoaDon.reloadResources();
                pnMain.add(QlHoaDon.getPnMain());
-               frmTrangChu.revalidate();
-               frmTrangChu.repaint();
+               pnMain.revalidate();
+               pnMain.repaint();
             }
         });
 
@@ -255,9 +261,12 @@ public class TrangChuGUI {
             public void actionPerformed(ActionEvent e) {
                 pnMain.removeAll();
                 DoanhThuGUI qlDoanhThu = DoanhThuGUI.getInstance();
+                qlDoanhThu.initialize();
+                qlDoanhThu.reloadResources();
                 pnMain.add(qlDoanhThu.getPnTongQuanQLDT());
                 pnMain.revalidate();
                 pnMain.repaint();
+                
             }
         });
     }

@@ -39,7 +39,7 @@ import javax.swing.JFrame;
 
 
 
-public class QLGuiXeGUI {
+public final class QLGuiXeGUI {
     static QLGuiXeGUI instance = null;
     private static String bienSoXe;
     private JPanel pnMain;
@@ -62,7 +62,7 @@ public class QLGuiXeGUI {
     private JLabel lblNgayVao;
     private JLabel lblThongBao;
     private JComboBox<String> cbbMaVe;
-
+    
     private boolean isEdit = true;
     private JTextField tfTimKiem;
 
@@ -71,7 +71,7 @@ public class QLGuiXeGUI {
         loadResources(tenKhuVuc);
     }
 
-    private void loadResources(String tenKhuVuc) {
+    public void loadResources(String tenKhuVuc) {
         tbViTriTrong.setModel(QLViTriBLL.getInstance().getResources(tenKhuVuc));
     }
 
@@ -175,7 +175,11 @@ public class QLGuiXeGUI {
         cbbMaVe.setForeground(new Color(161,0,53));
         for (VeDTO veDTO : dsVe) {
             if(veDTO.getTinhTrangVe().equals("ĐANG SỬ DỤNG")) {
-                    continue;			}
+                    continue;
+            }
+            if(veDTO.getBienSoXe()!=null){
+                continue;
+            }
             cbbMaVe.addItem(veDTO.getMaVe());
         }
         pnThongTinKhuVuc.add(cbbMaVe);
@@ -236,7 +240,7 @@ public class QLGuiXeGUI {
 
         Button btnLap = new Button(" Lập ");
         btnLap.setFont(new Font("Times New Roman", Font.BOLD, 24));
-        btnLap.setBounds(500, 350, 160, 80);
+        btnLap.setBounds(300, 370, 150, 50);
         btnLap.setForeground(Color.white);
         btnLap.setBackground(new Color(161,0,53));
         btnLap.addActionListener(new ActionListener() {
@@ -250,12 +254,13 @@ public class QLGuiXeGUI {
                     RaVaoBenDTO rvb= new RaVaoBenDTO(cbbMaVe.getSelectedItem().toString(), lTTenViTri.getText(),
                     lTTenKhuVuc.getText(), tfBienSoXe.getText(), Date.valueOf(ngayvao));
                     String result = QLRaVaoBenBLL.getInstance().addProcessing(rvb);
-                    lblThongBao.setText(result); 
-                    
+                    lblThongBao.setText(result);
+                    if(result.equals("Xe Vào Thành Công")){   
                     cbbMaVe.removeItem(cbbMaVe.getSelectedItem());
                     reloadResources(tenKhuVuc);
                     TrangChuGUI.getInstance().initittle();
                     clearField();
+                    }
                 }   
                catch(Exception ex)
                {
@@ -264,5 +269,46 @@ public class QLGuiXeGUI {
             }
         });
         pnThongTinKhuVuc.add(btnLap);
+        
+        JButton btnTroVe = new JButton("Trở về");
+        btnTroVe.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                pnMain.removeAll();
+                QLKhuVucGUI qlKhuVuc = QLKhuVucGUI.getInstance();
+                qlKhuVuc.initialize();
+                qlKhuVuc.reloadResources();
+                pnMain.add(qlKhuVuc.getPnMain());
+                pnMain.revalidate();
+                pnMain.repaint();
+                }
+        });
+        btnTroVe.setIcon(new ImageIcon("icon\\logout.png"));
+        btnTroVe.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnTroVe.setBounds(570, 410, 168, 41);
+        btnTroVe.setForeground(new Color(161,0,53));
+        pnThongTinKhuVuc.add(btnTroVe);
+        
+        
+        JButton btnVeThang = new JButton("Vé tháng");
+        btnVeThang.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                pnMain.removeAll();
+                QLGuiXeVTGUI qlGuiXeVT = QLGuiXeVTGUI.getInstance(tenKhuVuc);
+                qlGuiXeVT.initialize(tenKhuVuc);
+                qlGuiXeVT.reloadResources(tenKhuVuc);
+                pnMain.add(qlGuiXeVT.getPnMain());
+                pnMain.revalidate();
+                pnMain.repaint();
+                }
+        });
+        btnVeThang.setIcon(new ImageIcon("icon\\ticket.png"));
+        btnVeThang.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnVeThang.setBounds(20, 410, 168, 41);
+        btnVeThang.setForeground(new Color(161,0,53));
+        pnThongTinKhuVuc.add(btnVeThang);
     }
+    
+    
 }

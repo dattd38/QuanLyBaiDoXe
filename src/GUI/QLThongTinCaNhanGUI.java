@@ -1,5 +1,6 @@
 package GUI;
 
+import BLL.DangNhapBLL;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -185,6 +186,12 @@ public class QLThongTinCaNhanGUI {
 		tfNhapLaiMatKhauMoi.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnQLMatKhau.add(tfNhapLaiMatKhauMoi);
 		tfNhapLaiMatKhauMoi.setColumns(10);
+                
+		lblMessage = new JLabel();
+		lblMessage.setFont(new Font("Times New Romen", Font.PLAIN, 13));
+		lblMessage.setForeground(new Color(161,0,53));
+		lblMessage.setBounds(723, 19, 312, 31);
+		pnQLMatKhau.add(lblMessage);
 		
 		JButton btnLuu = new JButton("Lưu");
 		btnLuu.setIcon(new ImageIcon("icon\\save.png"));
@@ -214,24 +221,48 @@ public class QLThongTinCaNhanGUI {
 			}
 		});
 		pnQLMatKhau.add(btnHuy);
-		
-		JButton btnDangXuat = new JButton("Đăng xuất");
-		btnDangXuat.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TrangChuGUI.getInstance().getFrmTrangChu().setVisible(false);
-				QLDangNhapGUI.getInstance().getFrame().setVisible(true);
-			}
-		});
-		btnDangXuat.setIcon(new ImageIcon("icon\\logout.png"));
-		btnDangXuat.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnDangXuat.setBounds(867, 156, 168, 41);
-                btnDangXuat.setForeground(new Color(161,0,53));
-		pnQLMatKhau.add(btnDangXuat);
-		
-		lblMessage = new JLabel();
-		lblMessage.setFont(new Font("Times New Romen", Font.PLAIN, 13));
-		lblMessage.setForeground(new Color(161,0,53));
-		lblMessage.setBounds(723, 19, 312, 31);
-		pnQLMatKhau.add(lblMessage);
+                
+                
+//                if(ThongTinCaNhanBLL.getInstance().getLTK().equals("1")){
+                    
+                    JButton btnDangXuat = new JButton("Đăng xuất");
+                    btnDangXuat.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                    TrangChuGUI.getInstance().getFrmTrangChu().setVisible(false);
+                                    QLThongTinCaNhanGUI.getInstance().loadResources();
+                                    QLDangNhapGUI.getInstance().clearField();
+                                    QLDangNhapGUI.getInstance().getFrame().setVisible(true);
+                            }
+                    });
+                    
+                    btnDangXuat.setIcon(new ImageIcon("icon\\logout.png"));
+                    btnDangXuat.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                    btnDangXuat.setBounds(867, 156, 168, 41);
+                    btnDangXuat.setForeground(new Color(161,0,53));
+                    pnQLMatKhau.add(btnDangXuat);
+//                }
+//                if(ThongTinCaNhanBLL.getInstance().getLTK().equals("2")||ThongTinCaNhanBLL.getInstance().getLTK().equals("3"))
+//                    {   
+//                        JButton btnBack = new JButton(new ImageIcon("icon//logout.png"));
+//                        btnBack.setBounds(876, 156, 168, 41);
+//                        btnBack.setText("Back");
+//                        btnBack.setForeground(new Color(161,0,53));
+//                        btnBack.setFont(new Font("Times New Roman", Font.BOLD, 16));
+//                        pnQLMatKhau.add(btnBack);
+//                        btnBack.addActionListener(new ActionListener() {
+//
+//                                @Override
+//                                public void actionPerformed(ActionEvent e) {
+//
+//                                        TrangChuGUI.getInstance().getFrmTrangChu().setVisible(false);
+//                                        QLDangNhapGUI.getInstance().clearField();
+//                                        QLThongTinCaNhanGUI.getInstance().loadResources();
+//                                        QuanTriHeThongGUI.getInstance().getFrmMain().setVisible(true);
+//                                }
+//                        });
+//                    }
+                
 	}
+        
+        
 }

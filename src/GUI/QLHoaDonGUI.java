@@ -3,35 +3,15 @@ import BLL.HoaDonBLL;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import BLL.QLDoanhThuBLL;
-import BLL.QLVeBLL;
-import BLL.QLViTriBLL;
-import static GUI.HoaDonGUI.instance;
-import com.toedter.calendar.JDateChooser;
-import java.awt.Button;
-import java.awt.Label;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 public class QLHoaDonGUI {
 static QLHoaDonGUI instance = null;
 private JPanel pnMain;
@@ -48,8 +28,8 @@ private void loadResources() {
 		tbHoaDon.setModel(HoaDonBLL.getInstance().getResources());
 	}
 public QLHoaDonGUI() {
-       initialize();
-       loadResources();
+            initialize();
+            loadResources();
 	}
 
 public JPanel getPnMain() {
@@ -97,11 +77,12 @@ public static QLHoaDonGUI getInstance() {
 		lblTitle.setForeground(Color.RED);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 30));
+                lblTitle.setForeground(new Color(161,0,53));
 		lblTitle.setBounds(350, 35, 350, 39);
 		pnTitle.add(lblTitle);
                 
                 JLabel lblThang = new JLabel();
-		lblThang.setForeground(Color.RED);
+		lblThang.setForeground(new Color(161,0,53));
 		lblThang.setHorizontalAlignment(SwingConstants.CENTER);
 		lblThang.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		lblThang.setBounds(550, 23, 239, 39);
@@ -138,15 +119,15 @@ public static QLHoaDonGUI getInstance() {
 //		lblAvgTien.setBounds(760, 380, 200, 50);
 //		pnDoanhThu.add(lblAvgTien);
                 
-                int TongTien=0;
-                
-                int count=tbHoaDon.getRowCount();
-                ArrayList<Integer> list= new ArrayList<Integer>();
-                for(int i=0;i<count;i++ )
-                {    
-                    list.add(Integer.parseInt(tbHoaDon.getValueAt(i, 5).toString()));
-                    TongTien+=TongTien+Integer.parseInt(tbHoaDon.getValueAt(i, 7).toString());
-                }
+//                int TongTien=0;
+//                
+//                int count=tbHoaDon.getRowCount();
+//                ArrayList<Integer> list= new ArrayList<Integer>();
+//                for(int i=0;i<count;i++ )
+//                {    
+//                    list.add(Integer.parseInt(tbHoaDon.getValueAt(i, 5).toString()));
+//                    TongTien+=TongTien+Integer.parseInt(tbHoaDon.getValueAt(i, 7).toString());
+//                }
                 
              
                     

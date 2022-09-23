@@ -87,8 +87,9 @@ public class HoaDonDAL {
         +"','"+hd.getNgayLap()+ "')"
         + "update RAVAOBEN set THOIGIANRA='"+hd.getNgayLap()+"',TRANGTHAI=N'ĐÃ LẤY' WHERE BIENSOXE ='"+hd.getBienSoXe()+"'"
         + "update VITRI set TRANGTHAI =N'TRỐNG' WHERE TENVITRI= '"+hd.getTenViTri()+"'"
-        + "update VE set TINHTRANGVE=N'CHƯA SỬ DỤNG' WHERE MAVE='"+hd.getMaVe()+"'";
-
+        + "update VE set TINHTRANGVE=N'CHƯA SỬ DỤNG' WHERE MAVE='"+hd.getMaVe()+"'"
+        +"UPDATE dbo.DOANHTHU SET SOXERA=SOXERA+1,TONGTIEN=TONGTIEN+'"+String.valueOf(ThanhTien)+"' WHERE NGAY='"+hd.getNgayLap()+"'";
+        
         int result = DAL.getInstance().executeQueryUpdate(query);
         if(result > 0) {
             dsHoaDon.add(hd);

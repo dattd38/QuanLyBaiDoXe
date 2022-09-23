@@ -68,7 +68,14 @@ public class ThongTinCaNhanBLL {
 		QLThongTinCaNhanGUI.getInstance().tfMaNhanVien.setText(nv.getMaNhanVien());
 		QLThongTinCaNhanGUI.getInstance().tfChucVu.setText(nv.getLoaiTaiKhoan());
 		QLThongTinCaNhanGUI.getInstance().tfTenNhanVien.setText(nv.getTenNhanVien());
+                
 	}
+        
+        public String getLTK(){
+            NhanVienDTO g=ThongTinCaNhanBLL.getInstance().getNhanVien();
+            String ltk=g.getLoaiTaiKhoan();   
+            return ltk;
+        }
 	
 	
 }

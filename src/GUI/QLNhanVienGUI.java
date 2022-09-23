@@ -22,7 +22,6 @@ import DTO.NhanVienDTO;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JPasswordField;
 import java.sql.Date;
@@ -241,7 +240,7 @@ public class QLNhanVienGUI {
                 tfSoDienThoai.setForeground(new Color(161,0,53));
 		pnThongTinNhap.add(tfSoDienThoai);
                 
-           JButton btnBack = new JButton(new ImageIcon("icon//logout.png"));
+                JButton btnBack = new JButton(new ImageIcon("icon//logout.png"));
                 btnBack.setBounds(900, 30, 120, 40);
                 btnBack.setText("Back");
                 btnBack.setForeground(new Color(161,0,53));

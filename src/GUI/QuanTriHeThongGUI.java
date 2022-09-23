@@ -1,6 +1,8 @@
 package GUI;
 
+import BLL.QLVeBLL;
 import BLL.ThongTinCaNhanBLL;
+import Controller.VeDAL;
 import DTO.NhanVienDTO;
 import GUI.QuanTriHeThongGUI;
 import java.awt.Button;
@@ -80,7 +82,7 @@ public class QuanTriHeThongGUI {
         pnMenu.add(lblHOTRO2);
 
         btnQuanlyBaiXe=new JButton("QUẢN LÝ BÃI XE");
-        btnQuanlyBaiXe.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        btnQuanlyBaiXe.setFont(new Font("Times New Roman", Font.BOLD, 17));
         btnQuanlyBaiXe.setIcon(new ImageIcon("icon//home.png"));
         btnQuanlyBaiXe.setBounds(150, 150, 300, 50);
         btnQuanlyBaiXe.setForeground(new Color(161,0,53));
@@ -88,6 +90,8 @@ public class QuanTriHeThongGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMain.setVisible(false);
+                TrangChuGUI.getInstance().initittle();
+                TrangChuGUI.getInstance().initialize();
                 TrangChuGUI.getInstance().getFrmTrangChu().setVisible(true);
             }
         });
@@ -97,7 +101,7 @@ public class QuanTriHeThongGUI {
         frmMain.invalidate();
 
         btnQuanlynhansu=new JButton("QUẢN LÝ NHÂN SỰ");
-        btnQuanlynhansu.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        btnQuanlynhansu.setFont(new Font("Times New Roman", Font.BOLD, 17));
         btnQuanlynhansu.setIcon(new ImageIcon("icon//people.png"));
         btnQuanlynhansu.setBounds(650, 150, 300, 50);
         btnQuanlynhansu.setForeground(new Color(161,0,53));
@@ -113,34 +117,38 @@ public class QuanTriHeThongGUI {
         frmMain.repaint();
         frmMain.invalidate();
 
-//                btnQuanlyLuong=new JButton("QUẢN LÝ VỊ T");
-//                btnQuanlyLuong.setFont(new Font("Times New Roman", Font.BOLD, 14));
-//                btnQuanlyLuong.setIcon(new ImageIcon("icon//muontra.png"));
-//		btnQuanlyLuong.setBounds(150, 300, 300, 50);
-//		btnQuanlyLuong.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				frmMain.setVisible(false);
-//                                QLLuongGUI.getInstance().getFrmLuong().setVisible(true);
-//                                
-//                                			}
-//		});
-//                pnMenu.add(btnQuanlyLuong);
-//		pnMenu.setBackground(SystemColor.activeCaption);
-//		frmMain.repaint();
-//		frmMain.invalidate();
+        JButton btnQuanlyLuong = new JButton("ĐĂNG KÝ VÉ THÁNG");
+                btnQuanlyLuong.setFont(new Font("Times New Roman", Font.BOLD, 17));
+                btnQuanlyLuong.setIcon(new ImageIcon("icon//muontra.png"));
+		btnQuanlyLuong.setBounds(150, 300, 300, 50);
+                btnQuanlyLuong.setForeground(new Color(161,0,53));
+		btnQuanlyLuong.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                            frmMain.setVisible(false);
+                            QLVeBLL.getInstance().checkVe();
+                            QLVeThangGUI.getInstances().reloadResources();
+                            QLVeThangGUI.getInstances().getFormVe().setVisible(true);
+                                
+                                			}
+		});
+                pnMenu.add(btnQuanlyLuong);
+		pnMenu.setBackground(SystemColor.activeCaption);
+		frmMain.repaint();
+		frmMain.invalidate();
 
-        btnQuanlyDoanhThu=new JButton("QUẢN LÝ DOANH THU");
-        btnQuanlyDoanhThu.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        btnQuanlyDoanhThu=new JButton("QUẢN LÝ HỎNG HÓC");
+        btnQuanlyDoanhThu.setFont(new Font("Times New Roman", Font.BOLD, 17));
         btnQuanlyDoanhThu.setIcon(new ImageIcon("icon//System.png"));
-        btnQuanlyDoanhThu.setBounds(400, 300, 300, 50);
+        btnQuanlyDoanhThu.setBounds(650, 300, 300, 50);
         btnQuanlyDoanhThu.setForeground(new Color(161,0,53));
         btnQuanlyDoanhThu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMain.setVisible(false);
-                QLDoanhThuGUI.getInstance().getPnMain().setVisible(true);
+                HongHocGUI.getInstance().reloadResources();
+                HongHocGUI.getInstance().getFormHH().setVisible(true);
             }
         });
         pnMenu.add(btnQuanlyDoanhThu);
